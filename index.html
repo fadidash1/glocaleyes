@@ -1,1280 +1,353 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GlocalEyes - Cultural Exchange Travel App</title>
-    <style>
-        :root {
-            --primary-color: #4a6fa5;
-            --secondary-color: #ff7e5f;
-            --accent-color: #6b8e23;
-            --light-color: #f8f9fa;
-            --dark-color: #343a40;
-            --success-color: #28a745;
-            --warning-color: #ffc107;
-            --danger-color: #dc3545;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--light-color);
-            color: var(--dark-color);
-            line-height: 1.6;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-icon {
-            margin-right: 10px;
-            font-size: 2rem;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 1.5rem;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: var(--light-color);
-            text-decoration: underline;
-        }
-
-        .auth-buttons button {
-            background-color: white;
-            color: var(--primary-color);
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            margin-left: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .auth-buttons button:hover {
-            background-color: var(--light-color);
-            transform: translateY(-2px);
-        }
-
-        .hero {
-            background: url('https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-            height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            padding: 0 2rem;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .search-bar {
-            display: flex;
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .search-bar input {
-            flex: 1;
-            padding: 1rem;
-            border: none;
-            outline: none;
-            font-size: 1rem;
-        }
-
-        .search-bar button {
-            background-color: var(--secondary-color);
-            color: white;
-            border: none;
-            padding: 0 2rem;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .search-bar button:hover {
-            background-color: #ff6b4d;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 0 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .feature-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .locals-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .local-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .local-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .local-image {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .local-info {
-            padding: 1.5rem;
-        }
-
-        .local-info h3 {
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-        }
-
-        .local-location {
-            display: flex;
-            align-items: center;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-        }
-
-        .local-location i {
-            margin-right: 5px;
-        }
-
-        .local-rating {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .stars {
-            color: var(--warning-color);
-            margin-right: 10px;
-        }
-
-        .local-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .tag {
-            background-color: var(--light-color);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        .local-bio {
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-        }
-
-        .local-actions {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .btn {
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: #3a5a8c;
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .culture-guides {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 3rem 0;
-            margin: 3rem 0;
-        }
-
-        .guides-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .guides-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .guide-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .guide-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .guide-image {
-            height: 150px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .guide-info {
-            padding: 1.5rem;
-            color: var(--dark-color);
-        }
-
-        .guide-info h3 {
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-        }
-
-        .guide-download {
-            display: inline-block;
-            margin-top: 1rem;
-            color: var(--secondary-color);
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .guide-download:hover {
-            text-decoration: underline;
-        }
-
-        .testimonials {
-            margin-bottom: 4rem;
-        }
-
-        .testimonial-slider {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .testimonial {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            display: none;
-        }
-
-        .testimonial.active {
-            display: block;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .testimonial-text::before,
-        .testimonial-text::after {
-            content: '"';
-            font-size: 2rem;
-            color: var(--secondary-color);
-            opacity: 0.5;
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-
-        .testimonial-location {
-            color: var(--secondary-color);
-            font-size: 0.9rem;
-        }
-
-        .slider-controls {
-            display: flex;
-            justify-content: center;
-            margin-top: 1.5rem;
-        }
-
-        .slider-dot {
-            width: 12px;
-            height: 12px;
-            background-color: #ccc;
-            border-radius: 50%;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .slider-dot.active {
-            background-color: var(--primary-color);
-        }
-
-        footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer-column h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
-
-        .footer-column ul {
-            list-style: none;
-        }
-
-        .footer-column ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-column ul li a {
-            color: #ddd;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .footer-column ul li a:hover {
-            color: white;
-            text-decoration: underline;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        .copyright {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #555;
-            font-size: 0.9rem;
-            color: #aaa;
-        }
-
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background-color: white;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 500px;
-            padding: 2rem;
-            position: relative;
-            animation: modalOpen 0.3s ease;
-        }
-
-        @keyframes modalOpen {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--dark-color);
-        }
-
-        .modal h2 {
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-            text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .form-group textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .form-submit {
-            width: 100%;
-            padding: 1rem;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .form-submit:hover {
-            background-color: #3a5a8c;
-        }
-
-        /* Chat widget */
-        .chat-widget {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 350px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            display: none;
-            flex-direction: column;
-            z-index: 999;
-        }
-
-        .chat-header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .chat-header h3 {
-            margin: 0;
-            font-size: 1.1rem;
-        }
-
-        .close-chat {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-
-        .chat-body {
-            flex: 1;
-            padding: 1rem;
-            height: 300px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .message {
-            max-width: 80%;
-            margin-bottom: 1rem;
-            padding: 0.8rem;
-            border-radius: 10px;
-            position: relative;
-        }
-
-        .received {
-            align-self: flex-start;
-            background-color: #f1f1f1;
-            border-top-left-radius: 0;
-        }
-
-        .sent {
-            align-self: flex-end;
-            background-color: var(--primary-color);
-            color: white;
-            border-top-right-radius: 0;
-        }
-
-        .message-time {
-            display: block;
-            font-size: 0.7rem;
-            margin-top: 5px;
-            opacity: 0.7;
-        }
-
-        .chat-footer {
-            padding: 1rem;
-            border-top: 1px solid #eee;
-            display: flex;
-        }
-
-        .chat-footer input {
-            flex: 1;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            outline: none;
-        }
-
-        .chat-footer button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            margin-left: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .chat-footer button:hover {
-            background-color: #3a5a8c;
-        }
-
-        .chat-icon {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            z-index: 999;
-        }
-
-        .chat-icon i {
-            font-size: 1.5rem;
-        }
-
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 1rem;
-            }
-
-            .logo {
-                margin-bottom: 1rem;
-            }
-
-            nav ul {
-                margin-bottom: 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .search-bar {
-                flex-direction: column;
-                border-radius: 10px;
-            }
-
-            .search-bar input {
-                border-radius: 10px 10px 0 0;
-            }
-
-            .search-bar button {
-                border-radius: 0 0 10px 10px;
-                padding: 1rem;
-            }
-
-            .chat-widget {
-                width: 90%;
-                right: 5%;
-            }
-        }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GlocalEyes – Cultural Exchange Travel App</title>
+  <meta name="description" content="Travel deeper, connect wider. Meet trusted locals, access culture guides, and chat with hosts with live translation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkfQ9Y+6S5Yy60U6LhWHeLkC49gty9P+qIkWq6r5q0zYl5I1Q3r3b1h9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --primary: #4a6fa5;
+      --secondary: #ff7e5f;
+      --accent: #6b8e23;
+      --bg: #f7f8fb;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --card: #ffffff;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --radius: 14px;
+    }/* Dark mode */
+.dark {
+  --bg: #0f172a;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --card: #111827;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.65;
+}
+
+/* Header */
+header {
+  position: sticky; top: 0; z-index: 1000;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fff; box-shadow: var(--shadow);
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; padding: .9rem 1.2rem; max-width: 1200px; margin: 0 auto; }
+.brand { display: flex; align-items: center; gap: .6rem; font-weight: 800; letter-spacing: .2px; font-size: 1.2rem; }
+.brand i { font-size: 1.3rem; }
+nav ul { display: flex; list-style: none; gap: 1rem; padding: 0; margin: 0; }
+nav a { color: #fff; text-decoration: none; font-weight: 600; opacity: .9; }
+nav a:hover { opacity: 1; text-decoration: underline; }
+.actions { display: flex; align-items: center; gap: .6rem; }
+.btn { border: 0; border-radius: 999px; padding: .55rem 1rem; font-weight: 700; cursor: pointer; transition: transform .15s ease, opacity .2s ease; }
+.btn:active { transform: translateY(1px) scale(.99); }
+.btn-ghost { background: #fff; color: var(--primary); }
+.btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.75); }
+.theme-toggle { background: transparent; border: 0; color: #fff; font-size: 1.2rem; cursor: pointer; }
+
+/* Mobile nav */
+.burger { display: none; background: transparent; border: 0; color: #fff; font-size: 1.4rem; }
+@media (max-width: 900px) {
+  nav ul { display: none; }
+  .burger { display: block; }
+  .mobile-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(0,0,0,.35); backdrop-filter: blur(6px); padding: .6rem; }
+  .mobile-menu a { display: block; color: #fff; padding: .8rem 1rem; background: rgba(255,255,255,.08); margin: .4rem 0; border-radius: 10px; text-decoration: none; }
+  .mobile-open .mobile-menu { display: block; }
+}
+
+/* Hero */
+.hero { position: relative; min-height: 64vh; display: grid; place-items: center; text-align: center; overflow: hidden; }
+.hero::before {
+  content: ""; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1503917988258-f87a78e3c995?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; filter: brightness(.65);
+  transform: scale(1.08);
+}
+.hero::after { content: ""; position: absolute; inset: 0; background: radial-gradient(transparent, rgba(0,0,0,.45)); }
+.hero-inner { position: relative; z-index: 1; max-width: 960px; padding: 2rem; color: #fff; }
+.hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; margin: 0 0 .8rem; text-shadow: 0 6px 30px rgba(0,0,0,.25); }
+.hero p { font-size: clamp(1rem, 2.2vw, 1.25rem); opacity: .95; margin: 0 0 1.4rem; }
+
+.searchbar { display: grid; grid-template-columns: 1fr auto; gap: .6rem; max-width: 680px; margin: 0 auto; background: #fff; padding: .5rem; border-radius: 999px; box-shadow: var(--shadow); }
+.searchbar input { border: 0; padding: .9rem 1rem; border-radius: 999px; outline: none; font-size: 1rem; }
+.searchbar .btn { background: var(--secondary); color: #fff; }
+
+.container { max-width: 1200px; margin: 2.6rem auto; padding: 0 1.2rem; }
+.section-title { text-align: center; font-size: 1.6rem; font-weight: 800; color: var(--primary); margin: 2.5rem 0 1.2rem; }
+
+/* Features */
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
+.card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.4rem; transition: transform .2s ease, box-shadow .2s ease; }
+.card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,.15); }
+.feature i { font-size: 1.8rem; color: var(--primary); }
+.feature h3 { margin: .6rem 0 .3rem; color: var(--primary); }
+
+/* Filters bar */
+.filters { display: grid; grid-template-columns: 1fr repeat(3, minmax(140px, 180px)); gap: .7rem; margin: 1.2rem 0 1.6rem; }
+.field { background: var(--card); border-radius: 12px; box-shadow: var(--shadow); display: flex; align-items: center; gap: .5rem; padding: .6rem .8rem; }
+.field input, .field select { border: 0; outline: none; background: transparent; color: var(--text); width: 100%; font-size: .95rem; }
+
+/* Locals grid */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+.local { overflow: hidden; }
+.local .img { position: relative; height: 200px; background-size: cover; background-position: center; }
+.local .img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.45), transparent); }
+.local .body { padding: 1rem 1.1rem; }
+.row { display: flex; align-items: center; justify-content: space-between; gap: .6rem; }
+.tags { display: flex; flex-wrap: wrap; gap: .4rem; margin: .5rem 0 .7rem; }
+.tag { font-size: .78rem; background: var(--bg); padding: .28rem .6rem; border-radius: 999px; color: var(--muted); border: 1px solid rgba(0,0,0,.05); }
+.rating { color: #f59e0b; font-weight: 700; }
+.actions-row { display: flex; gap: .5rem; }
+.btn-primary { background: var(--primary); color: #fff; }
+
+/* Guides */
+.guides { background: var(--primary); color: #fff; padding: 3rem 0; margin: 3rem 0; }
+.guides .grid .card { background: #fff; color: var(--text); overflow: hidden; }
+.guide-img { height: 150px; background-size: cover; background-position: center; }
+
+/* Testimonials */
+.testimonials { max-width: 900px; margin: 2rem auto; position: relative; }
+.slide { display: none; }
+.slide.active { display: block; }
+.t-box { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.4rem; text-align: center; }
+.t-box em { color: var(--muted); }
+.dots { display: flex; justify-content: center; gap: .5rem; margin-top: .8rem; }
+.dot { width: 10px; height: 10px; border-radius: 999px; background: #c7c7c7; cursor: pointer; }
+.dot.active { background: var(--primary); }
+
+/* Footer */
+footer { background: #0b1220; color: #e5e7eb; padding: 2.5rem 0 1rem; margin-top: 2rem; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; max-width: 1200px; margin: 0 auto; padding: 0 1.2rem; }
+.footer-grid a { color: #a5b4fc; text-decoration: none; }
+.foot-bottom { text-align: center; opacity: .7; margin-top: 1.4rem; font-size: .9rem; }
+
+/* Chat widget */
+.chat-icon { position: fixed; bottom: 18px; right: 18px; width: 60px; height: 60px; border-radius: 999px; display: grid; place-items: center; cursor: pointer; color: #fff; background: linear-gradient(135deg, var(--primary), var(--secondary)); box-shadow: 0 15px 30px rgba(0,0,0,.25); z-index: 990; }
+.chat { position: fixed; bottom: 18px; right: 18px; width: 360px; max-width: calc(100vw - 36px); display: none; flex-direction: column; background: var(--card); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; z-index: 995; }
+.chat.open { display: flex; animation: pop .2s ease; }
+@keyframes pop { from { transform: translateY(10px); opacity: 0 } to { transform: translateY(0); opacity: 1 } }
+.chat-h { display: flex; align-items: center; justify-content: space-between; padding: .8rem 1rem; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; }
+.chat-b { padding: .9rem; height: 320px; overflow-y: auto; display: flex; flex-direction: column; gap: .6rem; }
+.msg { max-width: 82%; padding: .6rem .8rem; border-radius: 12px; font-size: .95rem; position: relative; }
+.msg.recv { align-self: flex-start; background: #eef2ff; color: #111827; border-top-left-radius: 4px; }
+.msg.sent { align-self: flex-end; background: var(--primary); color: #fff; border-top-right-radius: 4px; }
+.time { display: block; opacity: .6; font-size: .72rem; margin-top: .25rem; }
+.typing { opacity: .7; font-style: italic; }
+.chat-f { display: flex; gap: .4rem; padding: .7rem; border-top: 1px solid rgba(0,0,0,.06); }
+.chat-f input { flex: 1; border: 1px solid rgba(0,0,0,.08); border-radius: 999px; padding: .6rem .8rem; background: transparent; color: var(--text); }
+.chat-f button { width: 42px; height: 42px; border-radius: 999px; border: 0; background: var(--primary); color: #fff; cursor: pointer; }
+
+/* Modal (reusable) */
+.modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,.55); z-index: 980; }
+.modal.open { display: flex; }
+.modal .box { background: var(--card); width: min(520px, 92vw); border-radius: 16px; box-shadow: var(--shadow); padding: 1.3rem; }
+.close-x { position: absolute; top: 10px; right: 14px; background: transparent; border: 0; font-size: 1.2rem; cursor: pointer; color: var(--muted); }
+.form { display: grid; gap: .9rem; }
+.form .group { display: grid; gap: .35rem; }
+.form label { font-weight: 700; font-size: .9rem; color: var(--muted); }
+.form input, .form select, .form textarea { padding: .7rem .8rem; border-radius: 10px; border: 1px solid rgba(0,0,0,.08); background: transparent; color: var(--text); }
+.form button { padding: .8rem 1rem; border-radius: 10px; border: 0; background: var(--primary); color: #fff; font-weight: 800; cursor: pointer; }
+
+/* Animations on scroll */
+[data-animate] { opacity: 0; transform: translateY(16px); transition: .6s ease; }
+[data-animate].in { opacity: 1; transform: translateY(0); }
+
+/* Toast */
+.toast { position: fixed; bottom: 92px; right: 18px; background: var(--card); color: var(--text); border-radius: 12px; box-shadow: var(--shadow); padding: .7rem .9rem; display: none; z-index: 1200; }
+.toast.show { display: block; animation: fade .2s ease; }
+@keyframes fade { from{opacity:0; transform: translateY(6px)} to{opacity:1; transform: translateY(0)} }
+
+/* Accessibility helpers */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <span class="logo-icon"><i class="fas fa-globe-americas"></i></span>
-            <span>GlocalEyes</span>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#locals">Meet Locals</a></li>
-                <li><a href="#guides">Culture Guides</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-        </nav>
-        <div class="auth-buttons">
-            <button id="login-btn">Log In</button>
-            <button id="signup-btn">Sign Up</button>
-        </div>
-    </header>
+  <!-- Header -->
+  <header id="top">
+    <div class="header-inner">
+      <div class="brand"><i class="fa-solid fa-globe"></i> GlocalEyes</div>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#locals">Meet Locals</a></li>
+          <li><a href="#guides">Culture Guides</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+      <div class="actions">
+        <button class="theme-toggle" id="themeBtn" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+        <button class="btn btn-outline" id="loginBtn">Log In</button>
+        <button class="btn btn-ghost" id="signupBtn">Sign Up</button>
+        <button class="burger" id="burger" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" aria-label="Mobile menu">
+      <a href="#home">Home</a>
+      <a href="#locals">Meet Locals</a>
+      <a href="#guides">Culture Guides</a>
+      <a href="#about">About</a>
+    </div>
+  </header>  <!-- Hero -->  <section class="hero" id="home">
+    <div class="hero-inner" data-animate>
+      <h1>Travel Deeper, Connect Wider</h1>
+      <p>Experience cultures through the eyes of locals with trusted profiles and seamless chat.</p>
+      <form class="searchbar" id="globalSearch" role="search" aria-label="Search locals by city or interest">
+        <input type="search" id="q" placeholder="Where do you want to experience local culture? (e.g., Madrid, Tea Ceremony)" />
+        <button class="btn" type="submit">Search Locals</button>
+      </form>
+    </div>
+  </section>  <main class="container">
+    <!-- Features -->
+    <section class="features" aria-labelledby="featuresTitle">
+      <h2 id="featuresTitle" class="section-title" data-animate>Why GlocalEyes</h2>
+      <div class="feature card" data-animate>
+        <i class="fa-solid fa-comments"></i>
+        <h3>Live Translation</h3>
+        <p>Chat in your language. We handle the rest with auto-translation and tone safety checks.</p>
+      </div>
+      <div class="feature card" data-animate>
+        <i class="fa-solid fa-shield-heart"></i>
+        <h3>Trust System</h3>
+        <p>Verified IDs, ratings, and community flags reduce friction and increase safety.</p>
+      </div>
+      <div class="feature card" data-animate>
+        <i class="fa-solid fa-map-location-dot"></i>
+        <h3>Local Experiences</h3>
+        <p>From hidden courtyards to family kitchens—book authentic activities curated by locals.</p>
+      </div>
+    </section><!-- Filters & Locals -->
+<section aria-labelledby="localsTitle">
+  <h2 id="localsTitle" class="section-title" data-animate>Meet Our Local Guides</h2>
 
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Travel Deeper, Connect Wider</h1>
-            <p>Experience cultures through the eyes of locals with real-time translation and authentic connections.</p>
-            <div class="search-bar">
-                <input type="text" placeholder="Where do you want to experience local culture?">
-                <button>Search Locals</button>
-            </div>
-        </div>
-    </section>
+  <div class="filters" role="region" aria-label="Filters" data-animate>
+    <div class="field"><i class="fa-solid fa-magnifying-glass"></i><input id="fText" placeholder="Search name, city, tag..." /></div>
+    <div class="field"><i class="fa-solid fa-earth-europe"></i>
+      <select id="fCountry">
+        <option value="">All Countries</option>
+        <option>Spain</option>
+        <option>Japan</option>
+        <option>Morocco</option>
+        <option>France</option>
+      </select>
+    </div>
+    <div class="field"><i class="fa-solid fa-star"></i>
+      <select id="fRating">
+        <option value="">Any Rating</option>
+        <option value="4.5">4.5+</option>
+        <option value="4.8">4.8+</option>
+      </select>
+    </div>
+    <div class="field"><i class="fa-solid fa-sort"></i>
+      <select id="fSort">
+        <option value="top">Top Rated</option>
+        <option value="reviews">Most Reviewed</option>
+        <option value="name">Name (A–Z)</option>
+      </select>
+    </div>
+  </div>
 
+  <div class="grid" id="localsGrid" aria-live="polite"></div>
+  <p id="resultsInfo" style="text-align:center; color: var(--muted); margin-top:.6rem"></p>
+</section>
+
+  </main>  <!-- Culture Guides -->  <section class="guides" id="guides" aria-labelledby="guidesTitle">
     <div class="container">
-        <section class="features">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-comments"></i>
-                </div>
-                <h3>Live Translation</h3>
-                <p>Chat with locals in your own language with our real-time translation technology.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-star"></i>
-                </div>
-                <h3>Trust System</h3>
-                <p>Verified profiles and ratings ensure safe and meaningful connections.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-map-marked-alt"></i>
-                </div>
-                <h3>Local Experiences</h3>
-                <p>Discover hidden gems and authentic activities recommended by locals.</p>
-            </div>
-        </section>
-
-        <h2 class="section-title">Meet Our Local Guides</h2>
-        <div class="locals-grid" id="locals">
-            <!-- Local cards will be generated by JavaScript -->
-        </div>
+      <h2 id="guidesTitle" class="section-title" data-animate>Culture Guides</h2>
+      <p style="text-align:center; opacity:.9" data-animate>Download our free mini-guides to understand local customs before you visit.</p>
+      <div class="grid" id="guidesGrid"></div>
     </div>
-
-    <section class="culture-guides">
-        <div class="guides-container">
-            <h2 class="section-title">Culture Guides</h2>
-            <p style="text-align: center; margin-bottom: 1rem;">Download our free mini-guides to understand local customs before you visit.</p>
-            <div class="guides-grid" id="guides">
-                <!-- Guide cards will be generated by JavaScript -->
-            </div>
+  </section>  <!-- Testimonials -->  <section class="container" aria-labelledby="tTitle">
+    <h2 id="tTitle" class="section-title" data-animate>Traveler Testimonials</h2>
+    <div class="testimonials" data-animate>
+      <div class="slide active">
+        <div class="t-box">
+          <p><em>“Thanks to GlocalEyes, I made a friend in Tokyo who showed me places I'd never find in guidebooks. The translation feature made communication seamless!”</em></p>
+          <strong>Sarah K.</strong><br />
+          <span class="muted">From Toronto, met Yuki in Tokyo</span>
         </div>
-    </section>
-
-    <div class="container">
-        <h2 class="section-title">Traveler Testimonials</h2>
-        <div class="testimonials">
-            <div class="testimonial-slider">
-                <div class="testimonial active">
-                    <p class="testimonial-text">Thanks to GlocalEyes, I made a friend in Tokyo who showed me places I'd never find in guidebooks. The translation feature made communication seamless!</p>
-                    <p class="testimonial-author">Sarah K.</p>
-                    <p class="testimonial-location">From Toronto, met Yuki in Tokyo</p>
-                </div>
-                <div class="testimonial">
-                    <p class="testimonial-text">As a local guide, I love sharing my culture with travelers. The rating system helps me connect with respectful, curious visitors.</p>
-                    <p class="testimonial-author">Diego M.</p>
-                    <p class="testimonial-location">Local guide in Mexico City</p>
-                </div>
-                <div class="testimonial">
-                    <p class="testimonial-text">The culture guides prepared me so well for my trip to Morocco. My local host was impressed with how much I knew about customs!</p>
-                    <p class="testimonial-author">James L.</p>
-                    <p class="testimonial-location">From London, met Amina in Marrakech</p>
-                </div>
-                <div class="slider-controls">
-                    <div class="slider-dot active" data-index="0"></div>
-                    <div class="slider-dot" data-index="1"></div>
-                    <div class="slider-dot" data-index="2"></div>
-                </div>
-            </div>
+      </div>
+      <div class="slide">
+        <div class="t-box">
+          <p><em>“As a local guide, I love sharing my culture with travelers. The rating system helps me connect with respectful, curious visitors.”</em></p>
+          <strong>Diego M.</strong><br />
+          <span class="muted">Local guide in Mexico City</span>
         </div>
+      </div>
+      <div class="slide">
+        <div class="t-box">
+          <p><em>“The culture guides prepared me so well for my trip to Morocco. My host was impressed with how much I knew about customs!”</em></p>
+          <strong>James L.</strong><br />
+          <span class="muted">From London, met Amina in Marrakech</span>
+        </div>
+      </div>
+      <div class="dots" id="dots"></div>
     </div>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>GlocalEyes</h3>
-                <p>Bridging cultures through authentic travel experiences since 2023.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            <div class="footer-column">
-                <h3>Explore</h3>
-                <ul>
-                    <li><a href="#">Destinations</a></li>
-                    <li><a href="#">Local Guides</a></li>
-                    <li><a href="#">Culture Guides</a></li>
-                    <li><a href="#">Travel Stories</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Company</h3>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Press</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Support</h3>
-                <ul>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Safety</a></li>
-                    <li><a href="#">Community Guidelines</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2023 GlocalEyes. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Modals -->
-    <div class="modal" id="login-modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Log In to GlocalEyes</h2>
-            <form id="login-form">
-                <div class="form-group">
-                    <label for="login-email">Email</label>
-                    <input type="email" id="login-email" required>
-                </div>
-                <div class="form-group">
-                    <label for="login-password">Password</label>
-                    <input type="password" id="login-password" required>
-                </div>
-                <button type="submit" class="form-submit">Log In</button>
-            </form>
-            <p style="text-align: center; margin-top: 1rem;">Don't have an account? <a href="#" id="switch-to-signup">Sign up</a></p>
-        </div>
+  </section>  <!-- About / CTA -->  <section class="container" id="about" aria-labelledby="aboutTitle">
+    <h2 id="aboutTitle" class="section-title" data-animate>About GlocalEyes</h2>
+    <div class="card" data-animate>
+      <p><strong>GlocalEyes</strong> bridges cultures through authentic travel experiences. Built for trust, safety, and depth—not just checklists. Since 2023.</p>
+      <p>Join as a traveler or a local host. Start chatting, plan an experience, and learn the ungoogleable.</p>
+      <div style="display:flex; gap:.6rem; margin-top:.6rem">
+        <button class="btn btn-primary" id="ctaSignup">Create Free Account</button>
+        <button class="btn" style="background:var(--secondary); color:#fff" id="ctaExplore">Explore Hosts</button>
+      </div>
     </div>
-
-    <div class="modal" id="signup-modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Join GlocalEyes</h2>
-            <form id="signup-form">
-                <div class="form-group">
-                    <label for="signup-name">Full Name</label>
-                    <input type="text" id="signup-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="signup-email">Email</label>
-                    <input type="email" id="signup-email" required>
-                </div>
-                <div class="form-group">
-                    <label for="signup-password">Password</label>
-                    <input type="password" id="signup-password" required>
-                </div>
-                <div class="form-group">
-                    <label for="signup-role">I want to:</label>
-                    <select id="signup-role" required>
-                        <option value="">Select an option</option>
-                        <option value="traveler">Connect with locals when I travel</option>
-                        <option value="local">Share my culture with travelers</option>
-                    </select>
-                </div>
-                <button type="submit" class="form-submit">Create Account</button>
-            </form>
-            <p style="text-align: center; margin-top: 1rem;">Already have an account? <a href="#" id="switch-to-login">Log in</a></p>
-        </div>
+  </section>  <!-- Footer -->  <footer>
+    <div class="footer-grid">
+      <div>
+        <h3><i class="fa-solid fa-globe"></i> GlocalEyes</h3>
+        <p>Bridging cultures through authentic travel experiences since 2023.</p>
+        <p>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter" style="margin:0 .5rem"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn" style="margin-left:.5rem"><i class="fab fa-linkedin-in"></i></a>
+        </p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <p><a href="#locals">Local Guides</a><br/><a href="#guides">Culture Guides</a><br/><a href="#about">About</a></p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <p><a href="#">Careers</a><br/><a href="#">Press</a><br/><a href="#">Contact</a></p>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <p><a href="#">Help Center</a><br/><a href="#">Safety</a><br/><a href="#">Community Guidelines</a><br/><a href="#">Terms of Service</a></p>
+      </div>
     </div>
-
-    <!-- Chat Widget -->
-    <div class="chat-icon" id="chat-icon">
-        <i class="fas fa-comments"></i>
-    </div>
-
-    <div class="chat-widget" id="chat-widget">
-        <div class="chat-header">
-            <h3>Chat with Maria (Madrid)</h3>
-            <button class="close-chat">&times;</button>
+    <p class="foot-bottom">© <span id="year"></span> GlocalEyes. All rights reserved.</p>
+  </footer>  <!-- Login Modal -->  <div class="modal" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+    <div class="box" style="position:relative">
+      <button class="close-x" data-close>&times;</button>
+      <h2 id="loginTitle" style="margin-top:0">Log In</h2>
+      <form class="form" id="loginForm" novalidate>
+        <div class="group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" placeholder="you@example.com" required />
         </div>
-        <div class="chat-body" id="chat-body">
-            <div class="message received">
-                Hola! I'm Maria, your local guide in Madrid. How can I help you?
-                <span class="message-time">10:02 AM</span>
-            </div>
-            <div class="message sent">
-                Hi Maria! I'm visiting next month and would love to experience authentic flamenco.
-                <span class="message-time">10:05 AM</span>
-            </div>
-            <div class="message received">
-                Wonderful! I know a small family-run tablao that tourists rarely find. Would you like details?
-                <span class="message-time">10:06 AM</span>
-            </div>
+        <div class="group">
+          <label for="loginPass">Password</label>
+          <input type="password" id="loginPass" placeholder="••••••••" required minlength="6" />
         </div>
-        <div class="chat-footer">
-            <input type="text" placeholder="Type your message..." id="chat-input">
-            <button id="send-message"><i class="fas fa-paper-plane"></i></button>
-        </div>
-    </div>
-
-    <script>
-        // Sample data for locals and guides
-        const localsData = [
-            {
-                id: 1,
-                name: "Maria Gonzalez",
-                location: "Madrid, Spain",
-                rating: 4.9,
-                reviews: 42,
-                image: "https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=633&q=80",
-                tags: ["Flamenco", "Food", "History"],
-                bio: "Born and raised in Madrid, I love showing visitors the authentic side of my city beyond the tourist spots."
-            },
-            {
-                id: 2,
-                name: "Yuki Tanaka",
-                location: "Tokyo, Japan",
-                rating: 4.8,
-                reviews: 35,
-                image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-                tags: ["Anime", "Tea Ceremony", "Gardens"],
-                bio: "Bilingual guide passionate about sharing both modern and traditional aspects of Japanese culture."
-            },
-            {
-                id: 3,
-                name: "Ahmed Khalid",
-                location: "Marrakech, Morocco",
-                rating: 4.7,
-                reviews: 28,
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-                tags: ["Markets", "Cooking", "Desert"],
-                bio: "Let me show you the vibrant colors, flavors, and hospitality of my beautiful city."
-            },
-            {
-                id: 4,
-                name: "Sophie Martin",
-                location: "Paris, France",
-                rating: 4.9,
-                reviews: 56,
-                image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                tags: ["Art", "Fashion", "Pastry"],
-                bio: "Art historian who can take you to hidden galleries and the best patisseries in Paris."
-            }
-        ];
-
-        const guidesData = [
-            {
-                id: 1,
-                title: "Japanese Etiquette",
-                location: "Japan",
-                image: "https://images.unsplash.com/photo-1492571350019-22de08371fd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                description: "Essential dos and don'ts for visiting Japan"
-            },
-            {
-                id: 2,
-                title: "Moroccan Cuisine",
-                location: "Morocco",
-                image: "https://images.unsplash.com/photo-1517638851339-a711cfcf3279?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                description: "Guide to food culture and dining customs"
-            },
-            {
-                id: 3,
-                title: "Spanish Festivals",
-                location: "Spain",
-                image: "https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                description: "When and how to experience local celebrations"
-            },
-            {
-                id: 4,
-                title: "Indian Gestures",
-                location: "India",
-                image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80",
-                description: "Understanding body language and common gestures"
-            }
-        ];
-
-        // DOM elements
-        const localsGrid = document.getElementById('locals');
-        const guidesGrid = document.getElementById('guides');
-        const loginBtn = document.getElementById('login-btn');
-        const signupBtn = document.getElementById('signup-btn');
-        const loginModal = document.getElementById('login-modal');
-        const signupModal = document.getElementById('signup-modal');
-        const closeModalBtns = document.querySelectorAll('.close-modal');
-        const switchToSignup = document.getElementById('switch-to-signup');
-        const switchToLogin = document.getElementById('switch-to-login');
-        const chatIcon = document.getElementById('chat-icon');
-        const chatWidget = document.getElementById('chat-widget');
-        const closeChat = document.querySelector('.close-chat');
-        const chatBody = document.getElementById('chat-body');
-        const chatInput = document.getElementById('chat-input');
-        const sendMessageBtn = document.getElementById('send-message');
-        const testimonialSlides = document.querySelectorAll('.testimonial');
-        const sliderDots = document.querySelectorAll('.slider-dot');
-        const loginForm = document.getElementById('login-form');
-        const signupForm = document.getElementById('signup-form');
-
-        // Generate local cards
-        function generateLocalCards() {
-            localsGrid.innerHTML = '';
-            localsData.forEach(local => {
-                const stars = '★'.repeat(Math.floor(local.rating)) + '☆'.repeat(5 - Math.floor(local.rating));
-                
-                const card = document.createElement('div');
-                card.className = 'local-card';
-                card.innerHTML = `
-                    <div class="local-image" style="background-image: url('${local.image}')"></div>
-                    <div class="local-info">
-                        <h3>${local.name}</h3>
-                        <div class="local-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>${local.location}</span>
-                        </div>
-                        <div class="local-rating">
-                            <span class="stars">${stars}</span>
-                            <span>${local.rating} (${local.reviews} reviews)</span>
-                        </div>
-                        <div class="local-tags">
-                            ${local.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                        </div>
-                        <p class="local-bio">${local.bio}</p>
-                        <div class="local-actions">
-                            <button class="btn btn-outline">View Profile</button>
-                            <button class="btn btn-primary">Message</button>
-                        </div>
-                    </div>
-                `;
-                localsGrid.appendChild(card);
-            });
-        }
-
-        // Generate guide cards
-        function generateGuideCards() {
-            guidesGrid.innerHTML = '';
-            guidesData.forEach(guide => {
-                const card = document.createElement('div');
-                card.className = 'guide-card';
-                card.innerHTML = `
-                    <div class="guide-image" style="background-image: url('${guide.image}')"></div>
-                    <div class="guide-info">
-                        <h3>${guide.title}</h3>
-                        <p><i class="fas fa-map-marker-alt"></i> ${guide.location}</p>
-                        <p>${guide.description}</p>
-                        <a href="#" class="guide-download">Download Guide <i class="fas fa-download"></i></a>
-                    </div>
-                `;
-                guidesGrid.appendChild(card);
-            });
-        }
-
-        // Testimonial slider
-        let currentSlide = 0;
-
-        function showSlide(index) {
-            testimonialSlides.forEach(slide => slide.classList.remove('active'));
-            sliderDots.forEach(dot => dot.classList.remove('active'));
-            
-            testimonialSlides[index].classList.add('active');
-            sliderDots[index].classList.add('active');
-            currentSlide = index;
-        }
-
-        function nextSlide() {
-            let newIndex = (currentSlide + 1) % testimonialSlides.length;
-            showSlide(newIndex);
-        }
-
-        // Initialize slider dots
-        sliderDots.forEach((dot, index) => {
-            dot.addEventListener('click', () => showSlide(index));
-        });
-
-        // Auto-advance slides
-        setInterval(nextSlide, 5000);
-
-        // Modal functions
-        function openModal(modal) {
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal(modal) {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Chat functions
-        function toggleChat() {
-            chatWidget.style.display = chatWidget.style.display === 'flex' ? 'none' : 'flex';
-        }
-
-        function sendMessage() {
-            const message = chatInput.value.trim();
-            if (message) {
-                const now = new Date();
-                const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-                
-                const messageElement = document.createElement('div');
-                messageElement.className = 'message sent';
-                messageElement.innerHTML = `
-                    ${message}
-                    <span class="message-time">${timeString}</span>
-                `;
-                
-                chatBody.appendChild(messageElement);
-                chatInput.value = '';
-                chatBody.scrollTop = chatBody.scrollHeight;
-                
-                // Simulate reply after 1-3 seconds
-                setTimeout(() => {
-                    const replies = [
-                        "That sounds great! I'd be happy to arrange that for you.",
-                        "Let me check the schedule and get back to you.",
-                        "That's one of my favorite places to show visitors!",
-                        "Would you be interested in also seeing...?"
-                    ];
-                    const reply = replies[Math.floor(Math.random() * replies.length)];
-                    
-                    const replyElement = document.createElement('div');
-                    replyElement.className = 'message received';
-                    replyElement.innerHTML = `
-                        ${reply}
-                        <span class="message-time">${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-                    `;
-                    
-                    chatBody.appendChild(replyElement);
-                    chatBody.scrollTop = chatBody.scrollHeight;
-                }, 1000 + Math.random() * 2000);
-            }
-        }
-
-        // Event listeners
-        loginBtn.addEventListener('click', () => openModal(loginModal));
-        signupBtn.addEventListener('click', () => openModal(signupModal));
-
-        closeModalBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const modal = this.closest('.modal');
-                closeModal(modal);
-            });
-        });
-
-        window.addEventListener('click', (e) => {
-            if (e.target.classList.contains('modal')) {
-                closeModal(e.target);
-            }
-        });
-
-        switchToSignup.addEventListener('click', (e) => {
-            e.preventDefault();
-            closeModal(loginModal);
-            openModal(signupModal);
-        });
-
-        switchToLogin.addEventListener('click', (e) => {
-            e.preventDefault();
-            closeModal(signupModal);
-            openModal(loginModal);
-        });
-
-        chatIcon.addEventListener('click', toggleChat);
-        closeChat.addEventListener('click', toggleChat);
-
-        sendMessageBtn.addEventListener('click', sendMessage);
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
-
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Login functionality would be implemented here');
-            closeModal(loginModal);
-        });
-
-        signupForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Signup functionality would be implemented here');
-            closeModal(signupModal);
-        });
-
-        // Initialize the page
-        generateLocalCards();
-        generateGuideCards();
-        showSlide(0);
-    </script>
-</body>
-</html>
+        <button type="submit">Log In</button>
+        <p style="marg
