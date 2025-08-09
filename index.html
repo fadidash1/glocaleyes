@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en" dir="ltr">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,199 +23,201 @@
       --danger: #ef4444;
       --shadow: 0 10px 30px rgba(0,0,0,.08);
       --radius: 14px;
-    }/* Dark mode */
-.dark {
-  --bg: #0f172a;
-  --text: #e5e7eb;
-  --muted: #9ca3af;
-  --card: #111827;
-  --shadow: 0 10px 30px rgba(0,0,0,.35);
-}
+    }
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
-  color: var(--text);
-  background: var(--bg);
-  line-height: 1.65;
-}
+    /* Dark mode */
+    .dark {
+      --bg: #0f172a;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --card: #111827;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
 
-/* Header */
-header {
-  position: sticky; top: 0; z-index: 1000;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  color: #fff; box-shadow: var(--shadow);
-}
-.header-inner { display: flex; align-items: center; justify-content: space-between; padding: .9rem 1.2rem; max-width: 1200px; margin: 0 auto; }
-.brand { display: flex; align-items: center; gap: .6rem; font-weight: 800; letter-spacing: .2px; font-size: 1.2rem; }
-.brand i { font-size: 1.3rem; }
-nav ul { display: flex; list-style: none; gap: 1rem; padding: 0; margin: 0; }
-nav a { color: #fff; text-decoration: none; font-weight: 600; opacity: .9; }
-nav a:hover { opacity: 1; text-decoration: underline; }
-.actions { display: flex; align-items: center; gap: .6rem; }
-.btn { border: 0; border-radius: 999px; padding: .55rem 1rem; font-weight: 700; cursor: pointer; transition: transform .15s ease, opacity .2s ease; }
-.btn:active { transform: translateY(1px) scale(.99); }
-.btn-ghost { background: #fff; color: var(--primary); }
-.btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.75); }
-.theme-toggle { background: transparent; border: 0; color: #fff; font-size: 1.2rem; cursor: pointer; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+    }
 
-/* Mobile nav */
-.burger { display: none; background: transparent; border: 0; color: #fff; font-size: 1.4rem; }
-@media (max-width: 900px) {
-  nav ul { display: none; }
-  .burger { display: block; }
-  .mobile-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(0,0,0,.35); backdrop-filter: blur(6px); padding: .6rem; }
-  .mobile-menu a { display: block; color: #fff; padding: .8rem 1rem; background: rgba(255,255,255,.08); margin: .4rem 0; border-radius: 10px; text-decoration: none; }
-  .mobile-open .mobile-menu { display: block; }
-}
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 1000;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff; box-shadow: var(--shadow);
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .9rem 1.2rem; max-width: 1200px; margin: 0 auto; }
+    .brand { display: flex; align-items: center; gap: .6rem; font-weight: 800; letter-spacing: .2px; font-size: 1.2rem; }
+    .brand i { font-size: 1.3rem; }
+    nav ul { display: flex; list-style: none; gap: 1rem; padding: 0; margin: 0; }
+    nav a { color: #fff; text-decoration: none; font-weight: 600; opacity: .9; }
+    nav a:hover { opacity: 1; text-decoration: underline; }
+    .actions { display: flex; align-items: center; gap: .6rem; }
+    .btn { border: 0; border-radius: 999px; padding: .55rem 1rem; font-weight: 700; cursor: pointer; transition: transform .15s ease, opacity .2s ease; }
+    .btn:active { transform: translateY(1px) scale(.99); }
+    .btn-ghost { background: #fff; color: var(--primary); }
+    .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.75); }
+    .theme-toggle { background: transparent; border: 0; color: #fff; font-size: 1.2rem; cursor: pointer; }
 
-/* Hero */
-.hero { position: relative; min-height: 64vh; display: grid; place-items: center; text-align: center; overflow: hidden; }
-.hero::before {
-  content: ""; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1503917988258-f87a78e3c995?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; filter: brightness(.65);
-  transform: scale(1.08);
-}
-.hero::after { content: ""; position: absolute; inset: 0; background: radial-gradient(transparent, rgba(0,0,0,.45)); }
-.hero-inner { position: relative; z-index: 1; max-width: 960px; padding: 2rem; color: #fff; }
-.hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; margin: 0 0 .8rem; text-shadow: 0 6px 30px rgba(0,0,0,.25); }
-.hero p { font-size: clamp(1rem, 2.2vw, 1.25rem); opacity: .95; margin: 0 0 1.4rem; }
+    /* Mobile nav */
+    .burger { display: none; background: transparent; border: 0; color: #fff; font-size: 1.4rem; }
+    @media (max-width: 900px) {
+      nav ul { display: none; }
+      .burger { display: block; }
+      .mobile-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(0,0,0,.35); backdrop-filter: blur(6px); padding: .6rem; }
+      .mobile-menu a { display: block; color: #fff; padding: .8rem 1rem; background: rgba(255,255,255,.08); margin: .4rem 0; border-radius: 10px; text-decoration: none; }
+      .mobile-open .mobile-menu { display: block; }
+    }
 
-.searchbar { display: grid; grid-template-columns: 1fr auto; gap: .6rem; max-width: 680px; margin: 0 auto; background: #fff; padding: .5rem; border-radius: 999px; box-shadow: var(--shadow); }
-.searchbar input { border: 0; padding: .9rem 1rem; border-radius: 999px; outline: none; font-size: 1rem; }
-.searchbar .btn { background: var(--secondary); color: #fff; }
+    /* Hero */
+    .hero { position: relative; min-height: 64vh; display: grid; place-items: center; text-align: center; overflow: hidden; }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1503917988258-f87a78e3c995?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; filter: brightness(.65);
+      transform: scale(1.08);
+    }
+    .hero::after { content: ""; position: absolute; inset: 0; background: radial-gradient(transparent, rgba(0,0,0,.45)); }
+    .hero-inner { position: relative; z-index: 1; max-width: 960px; padding: 2rem; color: #fff; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; margin: 0 0 .8rem; text-shadow: 0 6px 30px rgba(0,0,0,.25); }
+    .hero p { font-size: clamp(1rem, 2.2vw, 1.25rem); opacity: .95; margin: 0 0 1.4rem; }
 
-.container { max-width: 1200px; margin: 2.6rem auto; padding: 0 1.2rem; }
-.section-title { text-align: center; font-size: 1.6rem; font-weight: 800; color: var(--primary); margin: 2.5rem 0 1.2rem; }
+    .searchbar { display: grid; grid-template-columns: 1fr auto; gap: .6rem; max-width: 680px; margin: 0 auto; background: #fff; padding: .5rem; border-radius: 999px; box-shadow: var(--shadow); }
+    .searchbar input { border: 0; padding: .9rem 1rem; border-radius: 999px; outline: none; font-size: 1rem; }
+    .searchbar .btn { background: var(--secondary); color: #fff; }
 
-/* Features */
-.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
-.card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.4rem; transition: transform .2s ease, box-shadow .2s ease; }
-.card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,.15); }
-.feature i { font-size: 1.8rem; color: var(--primary); }
-.feature h3 { margin: .6rem 0 .3rem; color: var(--primary); }
+    .container { max-width: 1200px; margin: 2.6rem auto; padding: 0 1.2rem; }
+    .section-title { text-align: center; font-size: 1.6rem; font-weight: 800; color: var(--primary); margin: 2.5rem 0 1.2rem; }
 
-/* Filters bar */
-.filters { display: grid; grid-template-columns: 1fr repeat(3, minmax(140px, 180px)); gap: .7rem; margin: 1.2rem 0 1.6rem; }
-.field { background: var(--card); border-radius: 12px; box-shadow: var(--shadow); display: flex; align-items: center; gap: .5rem; padding: .6rem .8rem; }
-.field input, .field select { border: 0; outline: none; background: transparent; color: var(--text); width: 100%; font-size: .95rem; }
+    /* Features */
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.4rem; transition: transform .2s ease, box-shadow .2s ease; }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,.15); }
+    .feature i { font-size: 1.8rem; color: var(--primary); }
+    .feature h3 { margin: .6rem 0 .3rem; color: var(--primary); }
 
-/* Locals grid */
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
-.local { overflow: hidden; }
-.local .img { position: relative; height: 200px; background-size: cover; background-position: center; }
-.local .img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.45), transparent); }
-.local .body { padding: 1rem 1.1rem; }
-.row { display: flex; align-items: center; justify-content: space-between; gap: .6rem; }
-.tags { display: flex; flex-wrap: wrap; gap: .4rem; margin: .5rem 0 .7rem; }
-.tag { font-size: .78rem; background: var(--bg); padding: .28rem .6rem; border-radius: 999px; color: var(--muted); border: 1px solid rgba(0,0,0,.05); }
-.rating { color: #f59e0b; font-weight: 700; }
-.actions-row { display: flex; gap: .5rem; }
-.btn-primary { background: var(--primary); color: #fff; }
+    /* Filters bar */
+    .filters { display: grid; grid-template-columns: 1fr repeat(3, minmax(140px, 180px)); gap: .7rem; margin: 1.2rem 0 1.6rem; }
+    .field { background: var(--card); border-radius: 12px; box-shadow: var(--shadow); display: flex; align-items: center; gap: .5rem; padding: .6rem .8rem; }
+    .field input, .field select { border: 0; outline: none; background: transparent; color: var(--text); width: 100%; font-size: .95rem; }
 
-/* Guides */
-.guides { background: var(--primary); color: #fff; padding: 3rem 0; margin: 3rem 0; }
-.guides .grid .card { background: #fff; color: var(--text); overflow: hidden; }
-.guide-img { height: 150px; background-size: cover; background-position: center; }
+    /* Locals grid */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .local { overflow: hidden; }
+    .local .img { position: relative; height: 200px; background-size: cover; background-position: center; }
+    .local .img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.45), transparent); }
+    .local .body { padding: 1rem 1.1rem; }
+    .row { display: flex; align-items: center; justify-content: space-between; gap: .6rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin: .5rem 0 .7rem; }
+    .tag { font-size: .78rem; background: var(--bg); padding: .28rem .6rem; border-radius: 999px; color: var(--muted); border: 1px solid rgba(0,0,0,.05); }
+    .rating { color: #f59e0b; font-weight: 700; }
+    .actions-row { display: flex; gap: .5rem; }
+    .btn-primary { background: var(--primary); color: #fff; }
 
-/* Testimonials */
-.testimonials { max-width: 900px; margin: 2rem auto; position: relative; }
-.slide { display: none; }
-.slide.active { display: block; }
-.t-box { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.4rem; text-align: center; }
-.t-box em { color: var(--muted); }
-.dots { display: flex; justify-content: center; gap: .5rem; margin-top: .8rem; }
-.dot { width: 10px; height: 10px; border-radius: 999px; background: #c7c7c7; cursor: pointer; }
-.dot.active { background: var(--primary); }
+    /* Guides */
+    .guides { background: var(--primary); color: #fff; padding: 3rem 0; margin: 3rem 0; }
+    .guides .grid .card { background: #fff; color: var(--text); overflow: hidden; }
+    .guide-img { height: 150px; background-size: cover; background-position: center; }
 
-/* Footer */
-footer { background: #0b1220; color: #e5e7eb; padding: 2.5rem 0 1rem; margin-top: 2rem; }
-.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; max-width: 1200px; margin: 0 auto; padding: 0 1.2rem; }
-.footer-grid a { color: #a5b4fc; text-decoration: none; }
-.foot-bottom { text-align: center; opacity: .7; margin-top: 1.4rem; font-size: .9rem; }
+    /* Testimonials */
+    .testimonials { max-width: 900px; margin: 2rem auto; position: relative; }
+    .slide { display: none; }
+    .slide.active { display: block; }
+    .t-box { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.4rem; text-align: center; }
+    .t-box em { color: var(--muted); }
+    .dots { display: flex; justify-content: center; gap: .5rem; margin-top: .8rem; }
+    .dot { width: 10px; height: 10px; border-radius: 999px; background: #c7c7c7; cursor: pointer; }
+    .dot.active { background: var(--primary); }
 
-/* Chat widget */
-.chat-icon { position: fixed; bottom: 18px; right: 18px; width: 60px; height: 60px; border-radius: 999px; display: grid; place-items: center; cursor: pointer; color: #fff; background: linear-gradient(135deg, var(--primary), var(--secondary)); box-shadow: 0 15px 30px rgba(0,0,0,.25); z-index: 990; }
-.chat { position: fixed; bottom: 18px; right: 18px; width: 360px; max-width: calc(100vw - 36px); display: none; flex-direction: column; background: var(--card); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; z-index: 995; }
-.chat.open { display: flex; animation: pop .2s ease; }
-@keyframes pop { from { transform: translateY(10px); opacity: 0 } to { transform: translateY(0); opacity: 1 } }
-.chat-h { display: flex; align-items: center; justify-content: space-between; padding: .8rem 1rem; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; }
-.chat-b { padding: .9rem; height: 320px; overflow-y: auto; display: flex; flex-direction: column; gap: .6rem; }
-.msg { max-width: 82%; padding: .6rem .8rem; border-radius: 12px; font-size: .95rem; position: relative; }
-.msg.recv { align-self: flex-start; background: #eef2ff; color: #111827; border-top-left-radius: 4px; }
-.msg.sent { align-self: flex-end; background: var(--primary); color: #fff; border-top-right-radius: 4px; }
-.time { display: block; opacity: .6; font-size: .72rem; margin-top: .25rem; }
-.typing { opacity: .7; font-style: italic; }
-.chat-f { display: flex; gap: .4rem; padding: .7rem; border-top: 1px solid rgba(0,0,0,.06); }
-.chat-f input { flex: 1; border: 1px solid rgba(0,0,0,.08); border-radius: 999px; padding: .6rem .8rem; background: transparent; color: var(--text); }
-.chat-f button { width: 42px; height: 42px; border-radius: 999px; border: 0; background: var(--primary); color: #fff; cursor: pointer; }
+    /* Footer */
+    footer { background: #0b1220; color: #e5e7eb; padding: 2.5rem 0 1rem; margin-top: 2rem; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; max-width: 1200px; margin: 0 auto; padding: 0 1.2rem; }
+    .footer-grid a { color: #a5b4fc; text-decoration: none; }
+    .foot-bottom { text-align: center; opacity: .7; margin-top: 1.4rem; font-size: .9rem; }
 
-/* Modal (reusable) */
-.modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,.55); z-index: 980; }
-.modal.open { display: flex; }
-.modal .box { background: var(--card); width: min(520px, 92vw); border-radius: 16px; box-shadow: var(--shadow); padding: 1.3rem; }
-.close-x { position: absolute; top: 10px; right: 14px; background: transparent; border: 0; font-size: 1.2rem; cursor: pointer; color: var(--muted); }
-.form { display: grid; gap: .9rem; }
-.form .group { display: grid; gap: .35rem; }
-.form label { font-weight: 700; font-size: .9rem; color: var(--muted); }
-.form input, .form select, .form textarea { padding: .7rem .8rem; border-radius: 10px; border: 1px solid rgba(0,0,0,.08); background: transparent; color: var(--text); }
-.form button { padding: .8rem 1rem; border-radius: 10px; border: 0; background: var(--primary); color: #fff; font-weight: 800; cursor: pointer; }
+    /* Chat widget */
+    .chat-icon { position: fixed; bottom: 18px; right: 18px; width: 60px; height: 60px; border-radius: 999px; display: grid; place-items: center; cursor: pointer; color: #fff; background: linear-gradient(135deg, var(--primary), var(--secondary)); box-shadow: 0 15px 30px rgba(0,0,0,.25); z-index: 990; }
+    .chat { position: fixed; bottom: 18px; right: 18px; width: 360px; max-width: calc(100vw - 36px); display: none; flex-direction: column; background: var(--card); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; z-index: 995; }
+    .chat.open { display: flex; animation: pop .2s ease; }
+    @keyframes pop { from { transform: translateY(10px); opacity: 0 } to { transform: translateY(0); opacity: 1 } }
+    .chat-h { display: flex; align-items: center; justify-content: space-between; padding: .8rem 1rem; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; }
+    .chat-b { padding: .9rem; height: 320px; overflow-y: auto; display: flex; flex-direction: column; gap: .6rem; }
+    .msg { max-width: 82%; padding: .6rem .8rem; border-radius: 12px; font-size: .95rem; position: relative; }
+    .msg.recv { align-self: flex-start; background: #eef2ff; color: #111827; border-top-left-radius: 4px; }
+    .msg.sent { align-self: flex-end; background: var(--primary); color: #fff; border-top-right-radius: 4px; }
+    .time { display: block; opacity: .6; font-size: .72rem; margin-top: .25rem; }
+    .typing { opacity: .7; font-style: italic; }
+    .chat-f { display: flex; gap: .4rem; padding: .7rem; border-top: 1px solid rgba(0,0,0,.06); }
+    .chat-f input { flex: 1; border: 1px solid rgba(0,0,0,.08); border-radius: 999px; padding: .6rem .8rem; background: transparent; color: var(--text); }
+    .chat-f button { width: 42px; height: 42px; border-radius: 999px; border: 0; background: var(--primary); color: #fff; cursor: pointer; }
 
-/* Animations on scroll */
-[data-animate] { opacity: 0; transform: translateY(16px); transition: .6s ease; }
-[data-animate].in { opacity: 1; transform: translateY(0); }
+    /* Modal (reusable) */
+    .modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,.55); z-index: 980; }
+    .modal.open { display: flex; }
+    .modal .box { background: var(--card); width: min(520px, 92vw); border-radius: 16px; box-shadow: var(--shadow); padding: 1.3rem; }
+    .close-x { position: absolute; top: 10px; right: 14px; background: transparent; border: 0; font-size: 1.2rem; cursor: pointer; color: var(--muted); }
+    .form { display: grid; gap: .9rem; }
+    .form .group { display: grid; gap: .35rem; }
+    .form label { font-weight: 700; font-size: .9rem; color: var(--muted); }
+    .form input, .form select, .form textarea { padding: .7rem .8rem; border-radius: 10px; border: 1px solid rgba(0,0,0,.08); background: transparent; color: var(--text); }
+    .form button { padding: .8rem 1rem; border-radius: 10px; border: 0; background: var(--primary); color: #fff; font-weight: 800; cursor: pointer; }
 
-/* Toast */
-.toast { position: fixed; bottom: 92px; right: 18px; background: var(--card); color: var(--text); border-radius: 12px; box-shadow: var(--shadow); padding: .7rem .9rem; display: none; z-index: 1200; }
-.toast.show { display: block; animation: fade .2s ease; }
-@keyframes fade { from{opacity:0; transform: translateY(6px)} to{opacity:1; transform: translateY(0)} }
+    /* Animations on scroll */
+    [data-animate] { opacity: 0; transform: translateY(16px); transition: .6s ease; }
+    [data-animate].in { opacity: 1; transform: translateY(0); }
 
-/* Accessibility helpers */
-.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    /* Toast */
+    .toast { position: fixed; bottom: 92px; right: 18px; background: var(--card); color: var(--text); border-radius: 12px; box-shadow: var(--shadow); padding: .7rem .9rem; display: none; z-index: 1200; }
+    .toast.show { display: block; animation: fade .2s ease; }
+    @keyframes fade { from{opacity:0; transform: translateY(6px)} to{opacity:1; transform: translateY(0)} }
 
-@media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; animation: none !important; }
-}
+    /* Accessibility helpers */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
-/* === Vivid Motion Add-ons === */
-/* Animated gradient sheen */
-.hero::before{ animation: heroZoom 18s ease-in-out infinite alternate; }
-@keyframes heroZoom{ from{ transform: scale(1.08)} to{ transform: scale(1.16)} }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+  
+    /* === Vivid Motion Add-ons === */
+    /* Animated gradient sheen */
+    .hero::before{ animation: heroZoom 18s ease-in-out infinite alternate; }
+    @keyframes heroZoom{ from{ transform: scale(1.08)} to{ transform: scale(1.16)} }
 
-/* Floating blobs */
-.blobs{ position:absolute; inset:0; pointer-events:none; overflow:hidden; }
-.blob{ position:absolute; width:420px; height:420px; filter: blur(80px); opacity:.28; border-radius:50%; mix-blend-mode:screen; animation: float 18s ease-in-out infinite; }
-.blob.b1{ background: radial-gradient(circle at 30% 30%, var(--secondary), transparent 60%); top:10%; left:-6%; animation-delay: 0s; }
-.blob.b2{ background: radial-gradient(circle at 70% 70%, var(--accent), transparent 60%); bottom:-12%; right:-8%; animation-delay: 4s; }
-.blob.b3{ background: radial-gradient(circle at 50% 50%, var(--primary), transparent 60%); top:50%; left:55%; animation-delay: 8s; }
-@keyframes float{ 0%,100%{ transform: translateY(-10px)} 50%{ transform: translateY(10px)} }
+    /* Floating blobs */
+    .blobs{ position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+    .blob{ position:absolute; width:420px; height:420px; filter: blur(80px); opacity:.28; border-radius:50%; mix-blend-mode:screen; animation: float 18s ease-in-out infinite; }
+    .blob.b1{ background: radial-gradient(circle at 30% 30%, var(--secondary), transparent 60%); top:10%; left:-6%; animation-delay: 0s; }
+    .blob.b2{ background: radial-gradient(circle at 70% 70%, var(--accent), transparent 60%); bottom:-12%; right:-8%; animation-delay: 4s; }
+    .blob.b3{ background: radial-gradient(circle at 50% 50%, var(--primary), transparent 60%); top:50%; left:55%; animation-delay: 8s; }
+    @keyframes float{ 0%,100%{ transform: translateY(-10px)} 50%{ transform: translateY(10px)} }
 
-/* Magnetic buttons */
-.magnet{ position:relative; overflow:hidden; transform: translateZ(0); }
-.magnet span{ position:relative; z-index:2 }
-.magnet .attractor{ position:absolute; inset:-30%; background: radial-gradient(circle, rgba(255,255,255,.2), transparent 60%); transform: translate(-50%,-50%); border-radius:50%; opacity:0; transition: opacity .2s; pointer-events:none; }
-.magnet.active .attractor{ opacity:1 }
+    /* Magnetic buttons */
+    .magnet{ position:relative; overflow:hidden; transform: translateZ(0); }
+    .magnet span{ position:relative; z-index:2 }
+    .magnet .attractor{ position:absolute; inset:-30%; background: radial-gradient(circle, rgba(255,255,255,.2), transparent 60%); transform: translate(-50%,-50%); border-radius:50%; opacity:0; transition: opacity .2s; pointer-events:none; }
+    .magnet.active .attractor{ opacity:1 }
 
-/* Button ripple */
-.ripple{ position:absolute; border-radius:50%; transform: translate(-50%,-50%) scale(0); animation: ripple .6s ease-out; background: rgba(255,255,255,.45); pointer-events:none; }
-@keyframes ripple{ to{ transform: translate(-50%,-50%) scale(12); opacity:0 } }
+    /* Button ripple */
+    .ripple{ position:absolute; border-radius:50%; transform: translate(-50%,-50%) scale(0); animation: ripple .6s ease-out; background: rgba(255,255,255,.45); pointer-events:none; }
+    @keyframes ripple{ to{ transform: translate(-50%,-50%) scale(12); opacity:0 } }
 
-/* Card tilt */
-.tilt{ will-change: transform; transform-style: preserve-3d; }
-.tilt .glare{ position:absolute; inset:0; background: radial-gradient(200px 200px at var(--mx,50%) var(--my,50%), rgba(255,255,255,.25), transparent 60%); opacity:0; transition: opacity .2s; mix-blend-mode: soft-light; pointer-events:none; }
-.tilt:hover .glare{ opacity:.9 }
+    /* Card tilt */
+    .tilt{ will-change: transform; transform-style: preserve-3d; }
+    .tilt .glare{ position:absolute; inset:0; background: radial-gradient(200px 200px at var(--mx,50%) var(--my,50%), rgba(255,255,255,.25), transparent 60%); opacity:0; transition: opacity .2s; mix-blend-mode: soft-light; pointer-events:none; }
+    .tilt:hover .glare{ opacity:.9 }
 
-/* Ticker */
-.ticker{ position: absolute; left:0; right:0; bottom:10px; display:flex; justify-content:center; }
-.ticker .pill{ display:inline-flex; align-items:center; gap:.5rem; padding:.45rem .8rem; border-radius:999px; background: rgba(0,0,0,.35); color:#fff; backdrop-filter: blur(8px); font-weight:700; box-shadow: var(--shadow); }
-.dot{ width:.5rem; height:.5rem; border-radius:50%; background: #22c55e; box-shadow:0 0 12px #22c55e }
+    /* Ticker */
+    .ticker{ position: absolute; left:0; right:0; bottom:10px; display:flex; justify-content:center; }
+    .ticker .pill{ display:inline-flex; align-items:center; gap:.5rem; padding:.45rem .8rem; border-radius:999px; background: rgba(0,0,0,.35); color:#fff; backdrop-filter: blur(8px); font-weight:700; box-shadow: var(--shadow); }
+    .dot{ width:.5rem; height:.5rem; border-radius:50%; background: #22c55e; box-shadow:0 0 12px #22c55e }
 
-/* Cursor soft spotlight */
-.spotlight{ position: fixed; width: 220px; height: 220px; background: radial-gradient(circle, rgba(255,255,255,.08), transparent 60%); pointer-events:none; border-radius:50%; mix-blend-mode: soft-light; left:0; top:0; transform: translate(-50%,-50%); opacity:0; transition: opacity .25s; z-index: 50; }
+    /* Cursor soft spotlight */
+    .spotlight{ position: fixed; width: 220px; height: 220px; background: radial-gradient(circle, rgba(255,255,255,.08), transparent 60%); pointer-events:none; border-radius:50%; mix-blend-mode: soft-light; left:0; top:0; transform: translate(-50%,-50%); opacity:0; transition: opacity .25s; z-index: 50; }
 
-/* Touch-friendly swipe hint on testimonials */
-.testimonials{ touch-action: pan-y; }
+    /* Touch-friendly swipe hint on testimonials */
+    .testimonials{ touch-action: pan-y; }
 
   </style>
 </head>
@@ -244,7 +247,10 @@ footer { background: #0b1220; color: #e5e7eb; padding: 2.5rem 0 1rem; margin-top
       <a href="#guides">Culture Guides</a>
       <a href="#about">About</a>
     </div>
-  </header>  <!-- Hero -->  <section class="hero" id="home">
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
     <div class="blobs" aria-hidden="true">
       <div class="blob b1"></div>
       <div class="blob b2"></div>
@@ -261,7 +267,9 @@ footer { background: #0b1220; color: #e5e7eb; padding: 2.5rem 0 1rem; margin-top
     <div class="ticker" aria-live="polite">
       <div class="pill"><span class="dot"></span> 18 travelers matched in the last hour</div>
     </div>
-  </section>  <main class="container">
+  </section>
+
+  <main class="container">
     <!-- Features -->
     <section class="features" aria-labelledby="featuresTitle">
       <h2 id="featuresTitle" class="section-title" data-animate>Why GlocalEyes</h2>
@@ -280,49 +288,56 @@ footer { background: #0b1220; color: #e5e7eb; padding: 2.5rem 0 1rem; margin-top
         <h3>Local Experiences</h3>
         <p>From hidden courtyards to family kitchens—book authentic activities curated by locals.</p>
       </div>
-    </section><!-- Filters & Locals -->
-<section id="locals" aria-labelledby="localsTitle">
-  <h2 id="localsTitle" class="section-title" data-animate>Meet Our Local Guides</h2>
+    </section>
 
-  <div class="filters" role="region" aria-label="Filters" data-animate>
-    <div class="field"><i class="fa-solid fa-magnifying-glass"></i><input id="fText" placeholder="Search name, city, tag..." /></div>
-    <div class="field"><i class="fa-solid fa-earth-europe"></i>
-      <select id="fCountry">
-        <option value="">All Countries</option>
-        <option>Spain</option>
-        <option>Japan</option>
-        <option>Morocco</option>
-        <option>France</option>
-      </select>
-    </div>
-    <div class="field"><i class="fa-solid fa-star"></i>
-      <select id="fRating">
-        <option value="">Any Rating</option>
-        <option value="4.5">4.5+</option>
-        <option value="4.8">4.8+</option>
-      </select>
-    </div>
-    <div class="field"><i class="fa-solid fa-sort"></i>
-      <select id="fSort">
-        <option value="top">Top Rated</option>
-        <option value="reviews">Most Reviewed</option>
-        <option value="name">Name (A–Z)</option>
-      </select>
-    </div>
-  </div>
+    <!-- Filters & Locals -->
+    <section id="locals" aria-labelledby="localsTitle">
+      <h2 id="localsTitle" class="section-title" data-animate>Meet Our Local Guides</h2>
 
-  <div class="grid" id="localsGrid" aria-live="polite"></div>
-  <p id="resultsInfo" style="text-align:center; color: var(--muted); margin-top:.6rem"></p>
-  <p id="resultsInfo" style="text-align:center; color: var(--muted); margin-top:.6rem"></p>
-</section>
+      <div class="filters" role="region" aria-label="Filters" data-animate>
+        <div class="field"><i class="fa-solid fa-magnifying-glass"></i><input id="fText" placeholder="Search name, city, tag..." /></div>
+        <div class="field"><i class="fa-solid fa-earth-europe"></i>
+          <select id="fCountry">
+            <option value="">All Countries</option>
+            <option>Spain</option>
+            <option>Japan</option>
+            <option>Morocco</option>
+            <option>France</option>
+          </select>
+        </div>
+        <div class="field"><i class="fa-solid fa-star"></i>
+          <select id="fRating">
+            <option value="">Any Rating</option>
+            <option value="4.5">4.5+</option>
+            <option value="4.8">4.8+</option>
+          </select>
+        </div>
+        <div class="field"><i class="fa-solid fa-sort"></i>
+          <select id="fSort">
+            <option value="top">Top Rated</option>
+            <option value="reviews">Most Reviewed</option>
+            <option value="name">Name (A–Z)</option>
+          </select>
+        </div>
+      </div>
 
-  </main>  <!-- Culture Guides -->  <section class="guides" id="guides" aria-labelledby="guidesTitle">
+      <div class="grid" id="localsGrid" aria-live="polite"></div>
+      <p id="resultsInfo" style="text-align:center; color: var(--muted); margin-top:.6rem"></p>
+      <p id="resultsInfo" style="text-align:center; color: var(--muted); margin-top:.6rem"></p>
+    </section>
+  </main>
+
+  <!-- Culture Guides -->
+  <section class="guides" id="guides" aria-labelledby="guidesTitle">
     <div class="container">
       <h2 id="guidesTitle" class="section-title" data-animate>Culture Guides</h2>
       <p style="text-align:center; opacity:.9" data-animate>Download our free mini-guides to understand local customs before you visit.</p>
       <div class="grid" id="guidesGrid"></div>
     </div>
-  </section>  <!-- Testimonials -->  <section class="container" aria-labelledby="tTitle">
+  </section>
+
+  <!-- Testimonials -->
+  <section class="container" aria-labelledby="tTitle">
     <h2 id="tTitle" class="section-title" data-animate>Traveler Testimonials</h2>
     <div class="testimonials" data-animate>
       <div class="slide active">
@@ -334,4 +349,569 @@ footer { background: #0b1220; color: #e5e7eb; padding: 2.5rem 0 1rem; margin-top
       </div>
       <div class="slide">
         <div class="t-box">
-          <p><em>“As a local guide, I love sharing my culture with travelers. The rating system helps me connect with respectful, curious visitors.”</em><
+          <p><em>“As a local guide, I love sharing my culture with travelers. The rating system helps me connect with respectful, curious visitors.”</em></p>
+          <strong>Diego M.</strong><br />
+          <span class="muted">Local guide in Mexico City</span>
+        </div>
+      </div>
+      <div class="slide">
+        <div class="t-box">
+          <p><em>“The culture guides prepared me so well for my trip to Morocco. My host was impressed with how much I knew about customs!”</em></p>
+          <strong>James L.</strong><br />
+          <span class="muted">From London, met Amina in Marrakech</span>
+        </div>
+      </div>
+      <div class="dots" id="dots"></div>
+    </div>
+  </section>
+
+  <!-- About / CTA -->
+  <section class="container" id="about" aria-labelledby="aboutTitle">
+    <h2 id="aboutTitle" class="section-title" data-animate>About GlocalEyes</h2>
+    <div class="card" data-animate>
+      <p><strong>GlocalEyes</strong> bridges cultures through authentic travel experiences. Built for trust, safety, and depth—not just checklists. Since 2023.</p>
+      <p>Join as a traveler or a local host. Start chatting, plan an experience, and learn the ungoogleable.</p>
+      <div style="display:flex; gap:.6rem; margin-top:.6rem">
+        <button class="btn btn-primary" id="ctaSignup">Create Free Account</button>
+        <button class="btn" style="background:var(--secondary); color:#fff" id="ctaExplore">Explore Hosts</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h3><i class="fa-solid fa-globe"></i> GlocalEyes</h3>
+        <p>Bridging cultures through authentic travel experiences since 2023.</p>
+        <p>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter" style="margin:0 .5rem"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn" style="margin-left:.5rem"><i class="fab fa-linkedin-in"></i></a>
+        </p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <p><a href="#locals">Local Guides</a><br/><a href="#guides">Culture Guides</a><br/><a href="#about">About</a></p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <p><a href="#">Careers</a><br/><a href="#">Press</a><br/><a href="#">Contact</a></p>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <p><a href="#">Help Center</a><br/><a href="#">Safety</a><br/><a href="#">Community Guidelines</a><br/><a href="#">Terms of Service</a></p>
+      </div>
+    </div>
+    <p class="foot-bottom">© <span id="year"></span> GlocalEyes. All rights reserved.</p>
+  </footer>
+
+  <!-- Login Modal -->
+  <div class="modal" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+    <div class="box" style="position:relative">
+      <button class="close-x" data-close>&times;</button>
+      <h2 id="loginTitle" style="margin-top:0">Log In</h2>
+      <form class="form" id="loginForm" novalidate>
+        <div class="group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" placeholder="you@example.com" required />
+        </div>
+        <div class="group">
+          <label for="loginPass">Password</label>
+          <input type="password" id="loginPass" placeholder="••••••••" required minlength="6" />
+        </div>
+        <button type="submit">Log In</button>
+        <p style="margin:0; font-size:.9rem">No account? <a href="#" id="goSignup">Sign up</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Signup Modal -->
+  <div class="modal" id="signupModal" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
+    <div class="box" style="position:relative">
+      <button class="close-x" data-close>&times;</button>
+      <h2 id="signupTitle" style="margin-top:0">Create Account</h2>
+      <form class="form" id="signupForm" novalidate>
+        <div class="group">
+          <label for="suName">Full Name</label>
+          <input type="text" id="suName" required />
+        </div>
+        <div class="group">
+          <label for="suEmail">Email</label>
+          <input type="email" id="suEmail" required />
+        </div>
+        <div class="group">
+          <label for="suPass">Password <span id="strength" class="muted" style="font-weight:400"></span></label>
+          <input type="password" id="suPass" required minlength="6" />
+        </div>
+        <div class="group">
+          <label for="suRole">I want to:</label>
+          <select id="suRole" required>
+            <option value="">Select</option>
+            <option value="traveler">Connect with locals when I travel</option>
+            <option value="local">Share my culture with travelers</option>
+          </select>
+        </div>
+        <button type="submit">Create Account</button>
+        <p style="margin:0; font-size:.9rem">Already have an account? <a href="#" id="goLogin">Log in</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Local Profile Modal -->
+  <div class="modal" id="profileModal" role="dialog" aria-modal="true" aria-labelledby="profileTitle">
+    <div class="box" style="position:relative">
+      <button class="close-x" data-close>&times;</button>
+      <div id="profileContent"></div>
+    </div>
+  </div>
+
+  <!-- Chat Widget -->
+  <div class="chat-icon" id="chatIcon" aria-label="Open chat"><i class="fa-solid fa-comments"></i></div>
+  <div class="chat" id="chat">
+    <div class="chat-h"><strong>Chat with Maria (Madrid)</strong> <button class="close-x" id="closeChat" aria-label="Close chat">&times;</button></div>
+    <div class="chat-b" id="chatBody" aria-live="polite">
+      <div class="msg recv">Hola! I'm Maria, your local guide in Madrid. How can I help you?<span class="time">10:02</span></div>
+      <div class="msg sent">Hi Maria! I'm visiting next month and would love authentic flamenco.<span class="time">10:05</span></div>
+      <div class="msg recv">Wonderful! I know a family-run <em>tablao</em>. Want details?<span class="time">10:06</span></div>
+    </div>
+    <div class="chat-f">
+      <label class="sr-only" for="chatInput">Type your message</label>
+      <input id="chatInput" placeholder="Type your message…" />
+      <button id="sendBtn" aria-label="Send"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // ===== Data =====
+    const localsData = [
+      { id:1, name:"Maria Gonzalez", city:"Madrid", country:"Spain", rating:4.9, reviews:42, image:"https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&w=800&q=80", tags:["Flamenco","Food","History"], bio:"Born and raised in Madrid. I'll show you the authentic side of the city." },
+      { id:2, name:"Yuki Tanaka", city:"Tokyo", country:"Japan", rating:4.8, reviews:35, image:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80", tags:["Anime","Tea Ceremony","Gardens"], bio:"Bilingual guide showcasing modern & traditional Japan." },
+      { id:3, name:"Ahmed Khalid", city:"Marrakech", country:"Morocco", rating:4.7, reviews:28, image:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80", tags:["Markets","Cooking","Desert"], bio:"Vibrant colors, flavors, and hospitality of my city." },
+      { id:4, name:"Sophie Martin", city:"Paris", country:"France", rating:4.9, reviews:56, image:"https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=1200&q=80", tags:["Art","Fashion","Pastry"], bio:"Art historian guiding you through hidden galleries & patisseries." }
+    ];
+
+    const guidesData = [
+      { id:1, title:"Japanese Etiquette", location:"Japan", image:"https://images.unsplash.com/photo-1492571350019-22de08371fd3?auto=format&fit=crop&w=1200&q=80", description:"Essential dos & don'ts for visiting Japan" },
+      { id:2, title:"Moroccan Cuisine", location:"Morocco", image:"https://images.unsplash.com/photo-1517638851339-a711cfcf3279?auto=format&fit=crop&w=1200&q=80", description:"Guide to food culture & dining customs" },
+      { id:3, title:"Spanish Festivals", location:"Spain", image:"https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?auto=format&fit=crop&w=1200&q=80", description:"When & how to experience celebrations" },
+      { id:4, title:"Indian Gestures", location:"India", image:"https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1200&q=80", description:"Understanding body language & gestures" }
+    ];
+
+    // ===== Helpers =====
+    const $ = (sel, el=document) => el.querySelector(sel);
+    const $$ = (sel, el=document) => [...el.querySelectorAll(sel)];
+
+    function toast(msg, ms=2200) {
+      const t = $('#toast');
+      t.textContent = msg; t.classList.add('show');
+      setTimeout(()=> t.classList.remove('show'), ms);
+    }
+
+    function saveLS(key, val){ localStorage.setItem(key, JSON.stringify(val)); }
+    function loadLS(key, def){ try { return JSON.parse(localStorage.getItem(key)) ?? def } catch { return def } }
+
+    // ===== Theme Toggle =====
+    const themeBtn = $('#themeBtn');
+    const userTheme = loadLS('theme', null);
+    if (userTheme === 'dark' || (!userTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)){
+      document.documentElement.classList.add('dark');
+    }
+    themeBtn.addEventListener('click', ()=>{
+      document.documentElement.classList.toggle('dark');
+      saveLS('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // ===== Mobile Nav =====
+    const burger = $('#burger');
+    const mobileMenu = $('#mobileMenu');
+    burger?.addEventListener('click', ()=> document.querySelector('header').classList.toggle('mobile-open'));
+    mobileMenu?.addEventListener('click', (e)=>{ if (e.target.tagName==='A') document.querySelector('header').classList.remove('mobile-open'); });
+
+    // ===== Animate on scroll =====
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(ent => { if (ent.isIntersecting) ent.target.classList.add('in'); })
+    }, { threshold: .12 });
+    $$('[data-animate]').forEach(el => obs.observe(el));
+
+    // ===== Locals rendering / filters =====
+    const grid = $('#localsGrid');
+    const resultsInfo = $('#resultsInfo');
+    const fText = $('#fText');
+    const fCountry = $('#fCountry');
+    const fRating = $('#fRating');
+    const fSort = $('#fSort');
+
+    let favorites = loadLS('favorites', []);
+
+    function starRow(r) {
+      const full = '★'.repeat(Math.floor(r));
+      const empty = '☆'.repeat(5 - Math.floor(r));
+      return `${full}${empty}`;
+    }
+
+    function renderLocals(list){
+      grid.innerHTML = '';
+      if (!list.length){ grid.innerHTML = '<p style="text-align:center; color:var(--muted)">No results. Try adjusting filters.</p>'; resultsInfo.textContent=''; return; }
+      list.forEach(loc => {
+        const card = document.createElement('article');
+        card.className = 'card local';
+        card.setAttribute('tabindex','0');
+        card.innerHTML = `
+          <div class="img" style="background-image:url('${loc.image}')"></div>
+          <div class="body">
+            <div class="row">
+              <h3 style="margin:.2rem 0">${loc.name}</h3>
+              <button class="btn" data-fav="${loc.id}" title="Save to favorites" aria-label="Save ${loc.name} to favorites"><i class="fa-${favorites.includes(loc.id)?'solid':'regular'} fa-heart"></i></button>
+            </div>
+            <div class="row" style="gap:.4rem; color: var(--muted)"><i class="fa-solid fa-location-dot"></i><span>${loc.city}, ${loc.country}</span></div>
+            <div class="row" style="margin:.3rem 0 .5rem; gap:.6rem">
+              <span class="rating">${starRow(loc.rating)}</span>
+              <span style="color:var(--muted)">${loc.rating.toFixed(1)} (${loc.reviews} reviews)</span>
+            </div>
+            <div class="tags">${loc.tags.map(t => `<span class='tag'>${t}</span>`).join('')}</div>
+            <div class="row" style="margin-top:.6rem">
+              <div class="actions-row">
+                <button class="btn btn-outline" data-view="${loc.id}">View Profile</button>
+                <button class="btn btn-primary" data-msg="${loc.id}">Message</button>
+              </div>
+            </div>
+          </div>`;
+        grid.appendChild(card);
+      });
+      resultsInfo.textContent = `${list.length} local${list.length>1?'s':''} shown`;
+    }
+
+    function applyFilters(){
+      const text = fText.value.trim().toLowerCase();
+      const country = fCountry.value;
+      const minRating = parseFloat(fRating.value || '0');
+      let list = localsData.filter(l => {
+        const textHit = !text || [l.name,l.city,l.country,...l.tags].some(v => String(v).toLowerCase().includes(text));
+        const countryHit = !country || l.country === country;
+        const ratingHit = !minRating || l.rating >= minRating;
+        return textHit && countryHit && ratingHit;
+      });
+      switch (fSort.value){
+        case 'reviews': list.sort((a,b)=> b.reviews - a.reviews); break;
+        case 'name': list.sort((a,b)=> a.name.localeCompare(b.name)); break;
+        default: list.sort((a,b)=> b.rating - a.rating || b.reviews - a.reviews); break;
+      }
+      renderLocals(list);
+    }
+
+    [fText,fCountry,fRating,fSort].forEach(el => el.addEventListener('input', applyFilters));
+
+    // Global hero search -> copy to filters and scroll
+    $('#globalSearch').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      fText.value = $('#q').value;
+      applyFilters();
+      const anchor = document.getElementById('locals'); if(anchor) anchor.scrollIntoView({behavior:'smooth'});
+    });
+
+    // Delegate actions (favorite / view / message)
+    grid.addEventListener('click', (e)=>{
+      const favId = e.target.closest('[data-fav]')?.getAttribute('data-fav');
+      const viewId = e.target.closest('[data-view]')?.getAttribute('data-view');
+      const msgId = e.target.closest('[data-msg]')?.getAttribute('data-msg');
+      if (favId){
+        const id = Number(favId);
+        favorites = favorites.includes(id) ? favorites.filter(x=>x!==id) : [...favorites, id];
+        saveLS('favorites', favorites);
+        applyFilters();
+        toast(favorites.includes(id)?'Saved to favorites':'Removed from favorites');
+      }
+      if (viewId){ openProfile(Number(viewId)); }
+      if (msgId){ openChatWith(Number(msgId)); }
+    });
+
+    // Initial render
+    renderLocals(localsData);
+
+    // ===== Guides =====
+    const guidesGrid = $('#guidesGrid');
+    function renderGuides(){
+      guidesGrid.innerHTML = '';
+      guidesData.forEach(g => {
+        const card = document.createElement('article');
+        card.className = 'card';
+        card.innerHTML = `
+          <div class="guide-img" style="background-image:url('${g.image}')"></div>
+          <div class="body" style="padding:1rem 1.1rem">
+            <h3 style="margin:.2rem 0">${g.title}</h3>
+            <p style="color:var(--muted); margin:.2rem 0 .6rem"><i class="fa-solid fa-location-dot"></i> ${g.location}</p>
+            <p>${g.description}</p>
+            <button class="btn" data-dl="${g.id}"><i class="fa-solid fa-download"></i> Download</button>
+          </div>`;
+        guidesGrid.appendChild(card);
+      });
+    }
+    renderGuides();
+
+    guidesGrid.addEventListener('click', (e)=>{
+      const id = e.target.closest('[data-dl]')?.getAttribute('data-dl');
+      if (!id) return;
+      const g = guidesData.find(x=> x.id === Number(id));
+      const content = `# ${g.title}\n\nLocation: ${g.location}\n\n${g.description}\n\nKey Tips:\n- Greet politely and observe.\n- Ask before photos.\n- Support local businesses.`;
+      const blob = new Blob([content], {type:'text/markdown'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = `${g.title.replace(/\s+/g,'_')}.md`; a.click();
+      URL.revokeObjectURL(url);
+      toast('Guide downloaded');
+    });
+
+    // ===== Testimonials slider =====
+    const slides = $$('.slide');
+    const dotsC = $('#dots');
+    slides.forEach((_,i)=>{
+      const d = document.createElement('button');
+      d.className = 'dot' + (i===0?' active':'');
+      d.setAttribute('aria-label', `Go to slide ${i+1}`);
+      d.addEventListener('click', ()=> showSlide(i));
+      dotsC.appendChild(d);
+    });
+    let cur = 0, auto;
+    function showSlide(i){
+      slides[cur].classList.remove('active'); dotsC.children[cur].classList.remove('active');
+      cur = i; slides[cur].classList.add('active'); dotsC.children[cur].classList.add('active');
+    }
+    function next(){ showSlide((cur+1)%slides.length); }
+    function startAuto(){ auto = setInterval(next, 5000); }
+    function stopAuto(){ clearInterval(auto); }
+    startAuto();
+    $('.testimonials').addEventListener('mouseenter', stopAuto);
+    $('.testimonials').addEventListener('mouseleave', startAuto);
+
+    // ===== Modals =====
+    const loginModal = $('#loginModal');
+    const signupModal = $('#signupModal');
+    const profileModal = $('#profileModal');
+
+    function openModal(m){ m.classList.add('open'); document.body.style.overflow='hidden'; }
+    function closeModal(m){ m.classList.remove('open'); document.body.style.overflow='auto'; }
+
+    document.addEventListener('click', (e)=>{
+      if (e.target.matches('[data-close]') || e.target.classList.contains('modal')) closeModal(e.target.closest('.modal'));
+    });
+
+    $('#loginBtn').addEventListener('click', ()=> openModal(loginModal));
+    $('#signupBtn').addEventListener('click', ()=> openModal(signupModal));
+    $('#ctaSignup').addEventListener('click', ()=> openModal(signupModal));
+    $('#ctaExplore').addEventListener('click', ()=> document.getElementById('locals').scrollIntoView({behavior:'smooth'}));
+    $('#goSignup').addEventListener('click', (e)=>{ e.preventDefault(); closeModal(loginModal); openModal(signupModal) });
+    $('#goLogin').addEventListener('click', (e)=>{ e.preventDefault(); closeModal(signupModal); openModal(loginModal) });
+
+    function openProfile(id){
+      const l = localsData.find(x=> x.id===id);
+      const html = `
+        <h2 id="profileTitle" style="margin-top:0">${l.name}</h2>
+        <div class="row" style="gap:.6rem; color:var(--muted)"><i class="fa-solid fa-location-dot"></i><span>${l.city}, ${l.country}</span></div>
+        <div class="row" style="gap:.6rem; margin:.5rem 0"><span class="rating">${'★'.repeat(Math.floor(l.rating))}${'☆'.repeat(5-Math.floor(l.rating))}</span><span>${l.rating.toFixed(1)} (${l.reviews} reviews)</span></div>
+        <img src="${l.image}" alt="${l.name}" style="width:100%; border-radius:12px; max-height:320px; object-fit:cover;"/>
+        <p style="margin:.8rem 0">${l.bio}</p>
+        <div class="tags">${l.tags.map(t=>`<span class='tag'>${t}</span>`).join('')}</div>
+        <div class="row" style="margin-top: .8rem"><button class="btn btn-primary" data-msg="${l.id}">Message</button></div>`;
+      $('#profileContent').innerHTML = html;
+      openModal(profileModal);
+    }
+
+    function openChatWith(id){
+      const l = localsData.find(x=> x.id===id);
+      $('#chat .chat-h strong').textContent = `Chat with ${l.name.split(' ')[0]} (${l.city})`;
+      openChat();
+    }
+
+    // ===== Auth (mock) =====
+    function validEmail(e){ return /.+@.+\..+/.test(e); }
+    function passStrength(p){ let s=0; if(p.length>=8) s++; if(/[A-Z]/.test(p)) s++; if(/[a-z]/.test(p)) s++; if(/\d/.test(p)) s++; if(/[^\w]/.test(p)) s++; return ['Weak','Okay','Good','Strong','Elite'][Math.min(s,4)]; }
+
+    $('#suPass').addEventListener('input', (e)=> $('#strength').textContent = `(${passStrength(e.target.value)})`);
+
+    $('#loginForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const email = $('#loginEmail').value.trim();
+      const pass = $('#loginPass').value;
+      if (!validEmail(email)) return toast('Enter a valid email');
+      if (pass.length < 6) return toast('Password too short');
+      toast('Logged in (demo)'); closeModal(loginModal);
+    });
+
+    $('#signupForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const name = $('#suName').value.trim();
+      const email = $('#suEmail').value.trim();
+      const pass = $('#suPass').value; const role = $('#suRole').value;
+      if (!name) return toast('Enter your name');
+      if (!validEmail(email)) return toast('Enter a valid email');
+      if (pass.length < 6) return toast('Password too short');
+      if (!role) return toast('Select a role');
+      toast('Account created (demo)'); closeModal(signupModal);
+    });
+
+    // ===== Chat =====
+    const chatIcon = $('#chatIcon');
+    const chat = $('#chat');
+    const closeChatBtn = $('#closeChat');
+    const chatBody = $('#chatBody');
+    const chatInput = $('#chatInput');
+    const sendBtn = $('#sendBtn');
+
+    function openChat(){ chat.classList.add('open'); chatInput.focus(); }
+    function closeChat(){ chat.classList.remove('open'); }
+
+    chatIcon.addEventListener('click', openChat);
+    closeChatBtn.addEventListener('click', closeChat);
+
+    function addMessage(text, who='sent'){
+      const el = document.createElement('div');
+      el.className = `msg ${who}`;
+      const time = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+      el.innerHTML = `${text}<span class="time">${time}</span>`;
+      chatBody.appendChild(el);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function botReply(){
+      const replies = [
+        "That sounds great! I'd be happy to arrange that for you.",
+        "Let me check the schedule and get back to you.",
+        "That's one of my favorite places to show visitors!",
+        "Would you be interested in also seeing…?"
+      ];
+      const i = Math.floor(Math.random()*replies.length);
+      addMessage(replies[i], 'recv');
+      persistChat();
+    }
+
+    function persistChat(){ saveLS('chatHistory', chatBody.innerHTML); }
+    (function restoreChat(){ const h = loadLS('chatHistory', null); if (h) chatBody.innerHTML = h; })();
+
+    function sendMessage(){
+      const text = chatInput.value.trim(); if (!text) return;
+      addMessage(text, 'sent'); chatInput.value=''; persistChat();
+      // typing indicator
+      const typing = document.createElement('div'); typing.className='msg recv typing'; typing.textContent='Typing…'; chatBody.appendChild(typing); chatBody.scrollTop = chatBody.scrollHeight;
+      setTimeout(()=>{ typing.remove(); botReply(); }, 900 + Math.random()*900);
+    }
+
+    sendBtn.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keydown', (e)=>{ if (e.key==='Enter') sendMessage(); });
+
+    // ===== Year =====
+    $('#year').textContent = new Date().getFullYear();
+
+    // ===== Accessibility: Escape to close modals & chat =====
+    document.addEventListener('keydown', (e)=>{
+      if (e.key === 'Escape') {
+        [loginModal, signupModal, profileModal].forEach(m=> m.classList.contains('open') && closeModal(m));
+        if (chat.classList.contains('open')) closeChat();
+      }
+    });
+  </script>
+  <div class="spotlight" id="spotlight" aria-hidden="true"></div>
+
+  <script>
+    // === Vivid JS Enhancements ===
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Button ripple on all .btn
+    document.addEventListener('click', (e)=>{
+      const btn = e.target.closest('.btn');
+      if(!btn) return;
+      const rect = btn.getBoundingClientRect();
+      const x = (e.clientX || (e.touches?.[0]?.clientX||0)) - rect.left;
+      const y = (e.clientY || (e.touches?.[0]?.clientY||0)) - rect.top;
+      const r = document.createElement('span');
+      r.className = 'ripple'; r.style.left = x+'px'; r.style.top = y+'px'; r.style.width = r.style.height = Math.max(rect.width, rect.height)+'px';
+      btn.appendChild(r); setTimeout(()=> r.remove(), 600);
+    }, {passive:true});
+
+    // Magnetic buttons effect
+    document.querySelectorAll('.magnet').forEach(m => {
+      const attractor = m.querySelector('.attractor');
+      m.addEventListener('pointermove', (e)=>{
+        const b = m.getBoundingClientRect();
+        const x = e.clientX - b.left, y = e.clientY - b.top;
+        attractor.style.left = x+'px'; attractor.style.top = y+'px';
+        m.classList.add('active');
+        if(!prefersReduced) m.style.transform = `translate(${(x-b.width/2)*.03}px, ${(y-b.height/2)*.03}px)`;
+      });
+      ['pointerleave','blur'].forEach(ev=> m.addEventListener(ev, ()=>{ m.classList.remove('active'); m.style.transform=''; }));
+    });
+
+    // Card tilt with glare
+    const tiltCards = ()=> document.querySelectorAll('.card.local').forEach(card => {
+      card.classList.add('tilt');
+      const glare = document.createElement('div'); glare.className='glare'; card.appendChild(glare);
+      card.addEventListener('pointermove', (e)=>{
+        const b = card.getBoundingClientRect();
+        const px = (e.clientX - b.left) / b.width - .5; // -0.5..0.5
+        const py = (e.clientY - b.top) / b.height - .5;
+        card.style.transform = `rotateX(${prefersReduced?0:-py*6}deg) rotateY(${prefersReduced?0:px*6}deg)`;
+        glare.style.setProperty('--mx', (px*100+50)+'%');
+        glare.style.setProperty('--my', (py*100+50)+'%');
+      });
+      card.addEventListener('pointerleave', ()=> card.style.transform = '');
+    });
+
+    // Parallax on hero text
+    (function(){
+      const hero = document.querySelector('.hero-inner');
+      if(!hero) return;
+      window.addEventListener('pointermove', (e)=>{
+        if (prefersReduced) return;
+        const x = (e.clientX / window.innerWidth - .5)*8;
+        const y = (e.clientY / window.innerHeight - .5)*8;
+        hero.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      });
+    })();
+
+    // Cursor spotlight
+    (function(){
+      const sp = document.getElementById('spotlight');
+      let hideTO;
+      window.addEventListener('pointermove', (e)=>{
+        sp.style.left = e.clientX + 'px'; sp.style.top = e.clientY + 'px';
+        sp.style.opacity = prefersReduced ? 0 : 1;
+        clearTimeout(hideTO); hideTO = setTimeout(()=> sp.style.opacity = 0, 900);
+      }, {passive:true});
+    })();
+
+    // Swipe for testimonials
+    (function(){
+      const box = document.querySelector('.testimonials'); if(!box) return;
+      let startX=0, dx=0;
+      box.addEventListener('touchstart', (e)=>{ startX = e.touches[0].clientX; }, {passive:true});
+      box.addEventListener('touchmove', (e)=>{ dx = e.touches[0].clientX - startX; }, {passive:true});
+      box.addEventListener('touchend', ()=>{ if (Math.abs(dx) > 50){ window.dispatchEvent(new CustomEvent('nextTestimonial', {detail: {dir: dx>0 ? -1 : 1}})); } dx=0; }, {passive:true});
+    })();
+
+    // Hook into existing testimonials auto-logic
+    (function(){
+      const slides = [...document.querySelectorAll('.slide')];
+      const dots = document.getElementById('dots').children;
+      let cur = slides.findIndex(s => s.classList.contains('active')) || 0;
+      function go(i){ slides[cur].classList.remove('active'); dots[cur].classList.remove('active'); cur = (i+slides.length)%slides.length; slides[cur].classList.add('active'); dots[cur].classList.add('active'); }
+      window.addEventListener('nextTestimonial', (e)=> go(cur + (e.detail.dir||1)));
+    })();
+
+    // Re-run tilt after locals render (the renderLocals function exists above)
+    const gridObs = new MutationObserver(()=> tiltCards());
+    gridObs.observe(document.getElementById('localsGrid'), {childList:true});
+    tiltCards();
+
+    // Animate ticker numbers subtly
+    (function tick(){
+      const pill = document.querySelector('.ticker .pill'); if(!pill) return;
+      let base = 18;
+      setInterval(()=>{ base += Math.random()>.6 ? 1 : 0; pill.innerHTML = `<span class='dot'></span> ${base} travelers matched in the last hour`; }, 5000);
+    })();
+  </script>
+</body>
+</html>
+
