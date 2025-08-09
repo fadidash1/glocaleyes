@@ -177,6 +177,45 @@ footer { background: #0b1220; color: #e5e7eb; padding: 2.5rem 0 1rem; margin-top
   * { transition: none !important; animation: none !important; }
 }
 
+/* === Vivid Motion Add-ons === */
+/* Animated gradient sheen */
+.hero::before{ animation: heroZoom 18s ease-in-out infinite alternate; }
+@keyframes heroZoom{ from{ transform: scale(1.08)} to{ transform: scale(1.16)} }
+
+/* Floating blobs */
+.blobs{ position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+.blob{ position:absolute; width:420px; height:420px; filter: blur(80px); opacity:.28; border-radius:50%; mix-blend-mode:screen; animation: float 18s ease-in-out infinite; }
+.blob.b1{ background: radial-gradient(circle at 30% 30%, var(--secondary), transparent 60%); top:10%; left:-6%; animation-delay: 0s; }
+.blob.b2{ background: radial-gradient(circle at 70% 70%, var(--accent), transparent 60%); bottom:-12%; right:-8%; animation-delay: 4s; }
+.blob.b3{ background: radial-gradient(circle at 50% 50%, var(--primary), transparent 60%); top:50%; left:55%; animation-delay: 8s; }
+@keyframes float{ 0%,100%{ transform: translateY(-10px)} 50%{ transform: translateY(10px)} }
+
+/* Magnetic buttons */
+.magnet{ position:relative; overflow:hidden; transform: translateZ(0); }
+.magnet span{ position:relative; z-index:2 }
+.magnet .attractor{ position:absolute; inset:-30%; background: radial-gradient(circle, rgba(255,255,255,.2), transparent 60%); transform: translate(-50%,-50%); border-radius:50%; opacity:0; transition: opacity .2s; pointer-events:none; }
+.magnet.active .attractor{ opacity:1 }
+
+/* Button ripple */
+.ripple{ position:absolute; border-radius:50%; transform: translate(-50%,-50%) scale(0); animation: ripple .6s ease-out; background: rgba(255,255,255,.45); pointer-events:none; }
+@keyframes ripple{ to{ transform: translate(-50%,-50%) scale(12); opacity:0 } }
+
+/* Card tilt */
+.tilt{ will-change: transform; transform-style: preserve-3d; }
+.tilt .glare{ position:absolute; inset:0; background: radial-gradient(200px 200px at var(--mx,50%) var(--my,50%), rgba(255,255,255,.25), transparent 60%); opacity:0; transition: opacity .2s; mix-blend-mode: soft-light; pointer-events:none; }
+.tilt:hover .glare{ opacity:.9 }
+
+/* Ticker */
+.ticker{ position: absolute; left:0; right:0; bottom:10px; display:flex; justify-content:center; }
+.ticker .pill{ display:inline-flex; align-items:center; gap:.5rem; padding:.45rem .8rem; border-radius:999px; background: rgba(0,0,0,.35); color:#fff; backdrop-filter: blur(8px); font-weight:700; box-shadow: var(--shadow); }
+.dot{ width:.5rem; height:.5rem; border-radius:50%; background: #22c55e; box-shadow:0 0 12px #22c55e }
+
+/* Cursor soft spotlight */
+.spotlight{ position: fixed; width: 220px; height: 220px; background: radial-gradient(circle, rgba(255,255,255,.08), transparent 60%); pointer-events:none; border-radius:50%; mix-blend-mode: soft-light; left:0; top:0; transform: translate(-50%,-50%); opacity:0; transition: opacity .25s; z-index: 50; }
+
+/* Touch-friendly swipe hint on testimonials */
+.testimonials{ touch-action: pan-y; }
+
   </style>
 </head>
 <body>
@@ -206,13 +245,21 @@ footer { background: #0b1220; color: #e5e7eb; padding: 2.5rem 0 1rem; margin-top
       <a href="#about">About</a>
     </div>
   </header>  <!-- Hero -->  <section class="hero" id="home">
+    <div class="blobs" aria-hidden="true">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="blob b3"></div>
+    </div>
     <div class="hero-inner" data-animate>
       <h1>Travel Deeper, Connect Wider</h1>
       <p>Experience cultures through the eyes of locals with trusted profiles and seamless chat.</p>
       <form class="searchbar" id="globalSearch" role="search" aria-label="Search locals by city or interest">
         <input type="search" id="q" placeholder="Where do you want to experience local culture? (e.g., Madrid, Tea Ceremony)" />
-        <button class="btn" type="submit">Search Locals</button>
+        <button class="btn magnet" type="submit"><span>Search Locals</span><i class="attractor"></i></button>
       </form>
+    </div>
+    <div class="ticker" aria-live="polite">
+      <div class="pill"><span class="dot"></span> 18 travelers matched in the last hour</div>
     </div>
   </section>  <main class="container">
     <!-- Features -->
@@ -234,7 +281,7 @@ footer { background: #0b1220; color: #e5e7eb; padding: 2.5rem 0 1rem; margin-top
         <p>From hidden courtyards to family kitchens—book authentic activities curated by locals.</p>
       </div>
     </section><!-- Filters & Locals -->
-<section aria-labelledby="localsTitle">
+<section id="locals" aria-labelledby="localsTitle">
   <h2 id="localsTitle" class="section-title" data-animate>Meet Our Local Guides</h2>
 
   <div class="filters" role="region" aria-label="Filters" data-animate>
@@ -266,6 +313,7 @@ footer { background: #0b1220; color: #e5e7eb; padding: 2.5rem 0 1rem; margin-top
 
   <div class="grid" id="localsGrid" aria-live="polite"></div>
   <p id="resultsInfo" style="text-align:center; color: var(--muted); margin-top:.6rem"></p>
+  <p id="resultsInfo" style="text-align:center; color: var(--muted); margin-top:.6rem"></p>
 </section>
 
   </main>  <!-- Culture Guides -->  <section class="guides" id="guides" aria-labelledby="guidesTitle">
@@ -286,68 +334,4 @@ footer { background: #0b1220; color: #e5e7eb; padding: 2.5rem 0 1rem; margin-top
       </div>
       <div class="slide">
         <div class="t-box">
-          <p><em>“As a local guide, I love sharing my culture with travelers. The rating system helps me connect with respectful, curious visitors.”</em></p>
-          <strong>Diego M.</strong><br />
-          <span class="muted">Local guide in Mexico City</span>
-        </div>
-      </div>
-      <div class="slide">
-        <div class="t-box">
-          <p><em>“The culture guides prepared me so well for my trip to Morocco. My host was impressed with how much I knew about customs!”</em></p>
-          <strong>James L.</strong><br />
-          <span class="muted">From London, met Amina in Marrakech</span>
-        </div>
-      </div>
-      <div class="dots" id="dots"></div>
-    </div>
-  </section>  <!-- About / CTA -->  <section class="container" id="about" aria-labelledby="aboutTitle">
-    <h2 id="aboutTitle" class="section-title" data-animate>About GlocalEyes</h2>
-    <div class="card" data-animate>
-      <p><strong>GlocalEyes</strong> bridges cultures through authentic travel experiences. Built for trust, safety, and depth—not just checklists. Since 2023.</p>
-      <p>Join as a traveler or a local host. Start chatting, plan an experience, and learn the ungoogleable.</p>
-      <div style="display:flex; gap:.6rem; margin-top:.6rem">
-        <button class="btn btn-primary" id="ctaSignup">Create Free Account</button>
-        <button class="btn" style="background:var(--secondary); color:#fff" id="ctaExplore">Explore Hosts</button>
-      </div>
-    </div>
-  </section>  <!-- Footer -->  <footer>
-    <div class="footer-grid">
-      <div>
-        <h3><i class="fa-solid fa-globe"></i> GlocalEyes</h3>
-        <p>Bridging cultures through authentic travel experiences since 2023.</p>
-        <p>
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" aria-label="Twitter" style="margin:0 .5rem"><i class="fab fa-twitter"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" aria-label="LinkedIn" style="margin-left:.5rem"><i class="fab fa-linkedin-in"></i></a>
-        </p>
-      </div>
-      <div>
-        <h4>Explore</h4>
-        <p><a href="#locals">Local Guides</a><br/><a href="#guides">Culture Guides</a><br/><a href="#about">About</a></p>
-      </div>
-      <div>
-        <h4>Company</h4>
-        <p><a href="#">Careers</a><br/><a href="#">Press</a><br/><a href="#">Contact</a></p>
-      </div>
-      <div>
-        <h4>Support</h4>
-        <p><a href="#">Help Center</a><br/><a href="#">Safety</a><br/><a href="#">Community Guidelines</a><br/><a href="#">Terms of Service</a></p>
-      </div>
-    </div>
-    <p class="foot-bottom">© <span id="year"></span> GlocalEyes. All rights reserved.</p>
-  </footer>  <!-- Login Modal -->  <div class="modal" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
-    <div class="box" style="position:relative">
-      <button class="close-x" data-close>&times;</button>
-      <h2 id="loginTitle" style="margin-top:0">Log In</h2>
-      <form class="form" id="loginForm" novalidate>
-        <div class="group">
-          <label for="loginEmail">Email</label>
-          <input type="email" id="loginEmail" placeholder="you@example.com" required />
-        </div>
-        <div class="group">
-          <label for="loginPass">Password</label>
-          <input type="password" id="loginPass" placeholder="••••••••" required minlength="6" />
-        </div>
-        <button type="submit">Log In</button>
-        <p style="marg
+          <p><em>“As a local guide, I love sharing my culture with travelers. The rating system helps me connect with respectful, curious visitors.”</em><
